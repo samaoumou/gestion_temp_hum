@@ -1,0 +1,75 @@
+<body style="background-image: #0b3532">
+  <div class="container col-md-8 " style=" border-radius:10px">
+    <form method="POST" class="row g-3" id="loginform" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <div>
+        <h2 class="text-center mt-5 text-white" id="titre">FORMULAIRE D'INSCRIPTION</h2>
+      </div>
+
+
+      <div class="col-md-6">
+        <label for="inputEmail4" class="form-label text-white" >PRENOM</label>
+        <input type="text" formControlName="prenom" class="form-control"  placeholder="PRENOM"
+        [ngClass]="{ 'is-invalid': submitted && registerForm.controls['prenom'].errors }" />
+        <div *ngIf="submitted &&  registerForm.controls['prenom'].errors" class="text-danger">
+        <div *ngIf="registerForm.controls['prenom'].errors['required'];then content else other_content">here is ignored</div>
+        <ng-template #content>Ce champ est requis</ng-template>
+        <ng-template #other_content>invalide</ng-template>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <label for="inputPassword4" class="form-label text-white">NOM</label>
+        <input type="text" formControlName="nom" class="form-control"  placeholder="NOM"
+        [ngClass]="{ 'is-invalid': submitted && registerForm.controls['nom'].errors }" />
+        <div *ngIf="submitted &&  registerForm.controls['nom'].errors" class="text-danger">
+          <div *ngIf="registerForm.controls['nom'].errors['required'];then content else other_content">here is ignored</div>
+          <ng-template #content>Ce champ est requis</ng-template>
+          <ng-template #other_content>invalide</ng-template>
+          </div>
+         </div>
+
+      <div class="col-6">
+        <label for="inputAddress" class="form-label text-white">EMAIL</label>
+        <input type="text" formControlName="email" class="form-control"  placeholder="EMAIL"
+        [ngClass]="{ 'is-invalid': submitted && registerForm.controls['email'].errors }" />
+        <div *ngIf="submitted &&  registerForm.controls['email'].errors" class="text-danger">
+        <div *ngIf=" registerForm.controls['email'].errors['required']">Ce champ est requis</div>
+        <div *ngIf=" registerForm.controls['email'].errors['pattern']">Format Mail incorrect</div>
+      </div>
+    </div>
+      <div class="col-md-6">
+        <label for="inputState" class="form-label text-white" >role</label>
+        <select id="role" name="role" class="form-select " formControlName="role">
+          <option selected></option>
+          <option name="role">administrateur</option>
+          <option name="role">utilisateur_simple</option>
+        </select>
+        <div *ngIf="submitted &&  registerForm.controls['role'].errors" class="text-danger">
+          <div *ngIf=" registerForm.controls['role'].errors['required']">Ce champ est requis</div>
+          </div>
+      </div>
+
+      <div class="col-6">
+        <label for="inputAddress2" class="form-label text-white">mot_de_passe</label>
+        <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" placeholder="Mot_de_passe"/>
+        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+            <div *ngIf="f.password.errors.required">Ce champ est requis</div>
+        </div>
+      </div>
+      <div class="col-6">
+        <label for="inputAddress2" class="form-label text-white">confirmation mot de passe</label>
+        <input type="password" formControlName="confirmPassword" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }" placeholder="Confirmation mot_de_passe"/>
+        <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
+            <div *ngIf="f.confirmPassword.errors.required">Ce champ est requis</div>
+            <div *ngIf="f.confirmPassword.errors.mustMatch">Les deux mot_de_passe ne correspondent pas</div>
+        </div>
+      </div>
+      <br>
+      <div class="form-group pied">
+        <button class="btn btn-primary btn-block noir" type="submit">Envoyer</button>
+        <p class="text-danger" id="message">{{mailExiste}}</p>
+        <button class=" btn btn-primary noir" routerLink="/pageAdmin">Retour</button>
+      </div>
+    </form>
+  </div>
+</body>
+

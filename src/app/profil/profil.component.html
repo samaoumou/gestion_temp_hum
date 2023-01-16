@@ -1,0 +1,49 @@
+<body style="background-image: #0b3532">
+  <div class="container col-md-6" style=" border-radius:10px">
+    <form method="POST" class="row g-3" id="loginform" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <span *ngIf="mailExiste != '' && mailExiste != undefined" class="alert alert-danger "> mail existe déja </span>
+      
+      <div>
+        <h2 class="text-center mt-5 text-white" id="titre">FORMULAIRE MODIFICATION PROFIL</h2>
+      </div>
+      <div>
+      </div>
+      <div class="col-md-6">
+        <label for="inputEmail4" class="form-label text-white" >PRENOM</label>
+        <input type="text" formControlName="prenom" class="form-control"  placeholder="PRENOM"
+        [ngClass]="{ 'is-invalid': submitted && registerForm.controls['prenom'].errors }" />
+        <div *ngIf="submitted &&  registerForm.controls['prenom'].errors" class="text-danger">
+        <div *ngIf="registerForm.controls['prenom'].errors['required'];then content else other_content">here is ignored</div>
+        <ng-template #content>Ce champ est requis</ng-template>
+        <ng-template #other_content>invalide</ng-template>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <label for="inputPassword4" class="form-label text-white">NOM</label>
+        <input type="text" formControlName="nom" class="form-control"  placeholder="NOM"
+        [ngClass]="{ 'is-invalid': submitted && registerForm.controls['nom'].errors }" />
+        <div *ngIf="submitted &&  registerForm.controls['nom'].errors" class="text-danger">
+          <div *ngIf="registerForm.controls['nom'].errors['required'];then content else other_content">here is ignored</div>
+          <ng-template #content>Ce champ est requis</ng-template>
+          <ng-template #other_content>invalide</ng-template>
+          </div>
+         </div>
+      <div class="col-8 a">
+        <label for="inputAddress" class="form-label text-white">EMAIL</label>
+        <input type="text" formControlName="email" class="form-control"  placeholder="EMAIL"
+        [ngClass]="{ 'is-invalid': submitted && registerForm.controls['email'].errors }" />
+        <div *ngIf="submitted &&  registerForm.controls['email'].errors" class="text-danger">
+        <div *ngIf=" registerForm.controls['email'].errors['required']">Ce champ est requis</div>
+        <div *ngIf=" registerForm.controls['email'].errors['pattern']">Format Mail incorrect</div>
+      </div>
+    </div>
+      <br>
+      <br>
+      <div class="form-group pied">
+        <button class="btn btn-primary btn-block noir" type="submit">Modifier</button>
+        <a class=" btn btn-primary noir" href="javascript:history.go(-1)">Retour</a>
+        
+      </div>
+    </form>
+  </div>
+</body>

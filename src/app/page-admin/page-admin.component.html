@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>page Admin</title>
+</head>
+<body >
+
+    <div class="container col-md-8  p-3" *ngIf="!showForm">
+<!-- Start partie 1 -->
+<div class="container part1 " style="border: 3px solid white;border-radius: 15px ;">
+            <div class=" row " >
+                  <div class="col-lg-10 col-md-4 col-lg-3">
+                  <a href="" routerLink="/off" style="font-size: 24px;"> Dashbord</a> <img src="../../assets/dash.png" alt="deconect" >
+                  </div>
+                  <div class="">
+                    <h6 class="text-white  p-1 border" style="border-top-right-radius:1rem;border-bottom-left-radius:1rem; width: max-content;">
+                      {{ this.currentUser.prenom }}  {{ this.currentUser.nom }} <img src="../../assets/cnUser.png" class="rounded-circle" style="width:15px;"></h6>
+                    
+                  </div>
+                  <div class="deconect mt-2 col-lg-2 col-md-4 col-lg-3 " style="position:absolute;right:  0;" >
+                      <img src="../../assets/deconecter.png" alt="deconect" style="height: 50px;" (click)="deconnect()">
+                  </div>
+
+             </div>
+ </div>
+ <!-- End partie 1 -->
+      <div class="container part2 mt-4" >
+        <div class="row">
+        <div class="gestion col-lg-4" style="  border: 2px solid white; height:200px ; border-radius: 15px ; border: 2px solid white;">
+
+            <img src="../../assets/iconeUser.png" alt="deconect"><a routerLink="/inscription">Ajouter Utilisateurs</a>
+
+            <div><br>
+                <img src="../../assets/modUser.png" alt="deconect" ><button class="btn" (click)="choice()">Modifier_profile</button>
+            </div><br>
+            <div>
+                <img src="../../assets/listeUser.png" alt="deconect"><a routerLink="/listeAdmin">Liste Utilisateurs</a>
+            </div>
+       </div>
+       <!--  -->
+        <div class="tmp-rel col-lg-8 " style="  border: 2px solid white;height:200px ;border-radius: 15px ;border: 2px solid white;">
+            <div class="row">
+                <div class="col-lg-12" >
+                <h3 class="text-white text-center border border-white" style="border-radius: 5px;">temps reel</h3>
+                </div>
+                <div class="row">
+                <div class="col-lg-4">
+                    <h4 class="text-white  ">Température</h4>
+                   <!--  -->
+                   <div>
+                    <img  src="../../assets/Temp.png" alt="Temp" style="height: 50px;"><a href=""> 25°C </a>
+                </div>
+                </div>
+                <div class="col-lg-5">
+
+                  <!-- <h1 class="text-white  ">Humidité</h1>
+                  <img src="../../assets/hum.png" alt="hum"> -->
+              </div>
+                <div class="col-lg-3">
+
+                    <h4 class="text-white ">Humidité</h4>
+                    <div>
+                     <img src="../../assets/hum.png" alt="hum" style="height: 50px;"><a href=""> 60% </a>
+                    </div>
+                </div>
+                 </div>
+            </div>
+        </div>
+    </div>
+      </div>
+
+ <!-- Start partie 2 -->
+ <div class="container part3 mt-4" >
+    <div class="row">
+        <div class="col-lg-8 col-md-4 col-lg-3 mt-2 ">
+            <table class="table text-white  border border-white">
+                <thead >
+                  <tr>
+                    <th scope="col">Heure</th>
+                    <th scope="col">08H00</th>
+                    <th scope="col">12H00</th>
+                    <th scope="col">19H00</th>
+                  </tr><br>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">Température</th>
+                    <td>27°C</td>
+                    <td>30°C</td>
+                    <td>23°C</td>
+                  </tr><br>
+                  <tr>
+                    <th scope="row">Humidité</th>
+                    <td>50%</td>
+                    <td>30%</td>
+                    <td>10%</td>
+                  </tr>
+
+                </tbody>
+              </table>
+        </div>
+        <div class="sec col-lg-4 col-md-4 col-lg-3 mt-2">
+            <img src="../../assets/humide.png" alt="sec">
+        </div>
+    </div>
+</div>
+ <!-- End partie2 -->
+    </div>
+
+    <div class="container col-md-6" style=" border-radius:10px" *ngIf="showForm">
+      <form method="POST" class="row g-3" id="loginform" [formGroup]="registerForm" (click)="onSubmit();">
+        <span *ngIf="mailExiste != '' && mailExiste != undefined" class="alert alert-danger "> mail existe déja </span>
+
+        <div>
+          <h2 class="text-center mt-5 text-white" id="titre">FORMULAIRE MODIFICATION PROFIL</h2>
+        </div>
+        <div>
+        </div>
+        <div class="col-md-6">
+          <label for="inputEmail4" class="form-label text-white" >PRENOM</label>
+          <input type="text" formControlName="prenom" class="form-control"  placeholder="PRENOM"
+          [ngClass]="{ 'is-invalid': submitted && registerForm.controls['prenom'].errors }" />
+          <div *ngIf="submitted &&  registerForm.controls['prenom'].errors" class="text-danger">
+          <div *ngIf="registerForm.controls['prenom'].errors['required'];then content else other_content">here is ignored</div>
+          <ng-template #content>Ce champ est requis</ng-template>
+          <ng-template #other_content>invalide</ng-template>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <label for="inputPassword4" class="form-label text-white">NOM</label>
+          <input type="text" formControlName="nom" class="form-control"  placeholder="NOM"
+          [ngClass]="{ 'is-invalid': submitted && registerForm.controls['nom'].errors }" />
+          <div *ngIf="submitted &&  registerForm.controls['nom'].errors" class="text-danger">
+            <div *ngIf="registerForm.controls['nom'].errors['required'];then content else other_content">here is ignored</div>
+            <ng-template #content>Ce champ est requis</ng-template>
+            <ng-template #other_content>invalide</ng-template>
+            </div>
+           </div>
+        <div class="col-8 a">
+          <label for="inputAddress" class="form-label text-white">EMAIL</label>
+          <input type="text" formControlName="email" class="form-control"  placeholder="EMAIL"
+          [ngClass]="{ 'is-invalid': submitted && registerForm.controls['email'].errors }" />
+          <div *ngIf="submitted &&  registerForm.controls['email'].errors" class="text-danger">
+          <div *ngIf=" registerForm.controls['email'].errors['required']">Ce champ est requis</div>
+          <div *ngIf=" registerForm.controls['email'].errors['pattern']">Format Mail incorrect</div>
+        </div>
+      </div>
+        <br>
+        <br>
+        <div class="form-group pied">
+          <button class="btn btn-primary btn-block noir" routerLink="/pageAdmin" type="submit">Modifier</button>
+           <a class=" btn btn-primary noir" href="javascript:history.go(-1)">Retour</a>
+        </div>
+      </form>
+    </div>
+
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.min.js" integrity="sha512-1/RvZTcCDEUjY/CypiMz+iqqtaoQfAITmNSJY17Myp4Ms5mdxPS5UV7iOfdZoxcGhzFbOm6sntTKJppjvuhg4g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</html>

@@ -1,0 +1,68 @@
+
+    <nav class="navbar navbar-expand-lg colorNav bg-dark">
+      <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+                <img src="../../assets/home.png" alt="" routerLink="/pageAdmin">
+            </li>
+<!--             <div class="info">
+              <p>{{prenom}}</p>
+              <p>{{nom}}</p>
+              <p>{{matricule}}</p>
+          </div> -->
+          </ul>
+          <form class="lesLiens">
+            <a (click)="deconnect()">
+                <svg width="30" height="35" viewBox="0 0 38 41" fill="none" xmlns="http://www.w3.org/2000/svg" >
+                    <path d="M13.25 39.625H5.58333C4.56667 39.625 3.59165 39.1772 2.87276 38.3802C2.15387 37.5832 1.75 36.5022 1.75 35.375V5.625C1.75 4.49783 2.15387 3.41683 2.87276 2.6198C3.59165 1.82277 4.56667 1.375 5.58333 1.375H13.25" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M26.666 31.125L36.2493 20.5L26.666 9.875" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M36.25 20.5H13.25" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+            </a>
+          </form>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+        <div class="rechercher">
+            <input type="text" placeholder="RECHERCHE" [(ngModel)]="searchText" autocomplete="off" title="Rechercher">
+            <button class="btn btn-outline-primary me-2 btn  text-white" type="button" routerLink="/listeAdmin"><a> Liste des utilisateurs actives</a></button>
+        </div>
+
+    <table class="table a   lign=center">
+      <thead>
+      <tr align="center">
+        <th scope="col">Prenom</th>
+        <th scope="col">Nom</th>
+        <th scope="col">Email</th>
+        <th scope="col">Matricule</th>
+        <th scope="col">Role</th>
+        <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+
+          <tr *ngFor="let users of User | filter:searchText | paginate: { itemsPerPage: 5, currentPage: pages } ">
+      <!-- <th scope="row">{{ book._id }}</th> -->
+      <th scope="row">{{ users.prenom }}</th>
+      <td>{{ users.nom }}</td>
+      <td>{{ users.email }}</td>
+      <!-- <td>{{ book.tel }}</td> -->
+      <td>{{ users.matricule }}</td>
+      <td>{{ users.role }}</td>
+            <td class="text-center">
+                <button class="btn btn-sm btn-info"  (click)="desarchive(users._id, users.etat)" title="Désarchiver"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-in-up" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M3.5 10a.5.5 0 0 1-.5-.5v-8a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 0 0 1h2A1.5 1.5 0 0 0 14 9.5v-8A1.5 1.5 0 0 0 12.5 0h-9A1.5 1.5 0 0 0 2 1.5v8A1.5 1.5 0 0 0 3.5 11h2a.5.5 0 0 0 0-1h-2z"/>
+                <path fill-rule="evenodd" d="M7.646 4.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V14.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3z"/>
+                </svg></button>
+            </td>
+        </tr>
+    </tbody>
+    </table>
+    <div class="pagination">
+      <pagination-controls  (pageChange)="pages = $event"></pagination-controls>
+    </div>
+    </div>
+
+

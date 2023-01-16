@@ -1,0 +1,81 @@
+
+    <nav class="navbar navbar-expand-lg colorNav bg-dark">
+      <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+                <a routerLink="/pageAdmin"><img src="../../assets/home.png" alt="" routerLink="/pageAdmin"></a>
+            </li>
+<!--             <div class="info">
+              <p>{{prenom}}</p>
+              <p>{{nom}}</p>
+              <p>{{matricule}}</p>
+          </div> -->
+          </ul>
+          <form class="lesLiens">
+         <!--    <a routerLink="/active" id="active" >active</a>
+            <a routerLink="archive" id="archive"  >archive</a> -->
+            <a (click)="deconnect()">
+                <svg width="30" height="35" viewBox="0 0 38 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M13.25 39.625H5.58333C4.56667 39.625 3.59165 39.1772 2.87276 38.3802C2.15387 37.5832 1.75 36.5022 1.75 35.375V5.625C1.75 4.49783 2.15387 3.41683 2.87276 2.6198C3.59165 1.82277 4.56667 1.375 5.58333 1.375H13.25" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M26.666 31.125L36.2493 20.5L26.666 9.875" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M36.25 20.5H13.25" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+            </a>
+          </form>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+        <div class="rechercher">
+            <input type="text" placeholder="RECHERCHE" [(ngModel)]="searchText" autocomplete="off" title="Rechercher">
+            <button class="btn btn-outline-primary me-2 btn  text-white" type="button" routerLink="/listeArchive"><a> Liste des utilisateurs archivés</a></button>
+        </div>
+
+    <table class="table a   lign=center">
+    <thead>
+        <tr align="center">
+        <th scope="col">Prenom</th>
+        <th scope="col">Nom</th>
+        <th scope="col">Email</th>
+        <th scope="col">Matricule</th>
+        <th scope="col">Role</th>
+        <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+
+          <tr *ngFor="let users of User | filter:searchText | paginate: { itemsPerPage: 5, currentPage: pages } ">
+      <!-- <th scope="row">{{ book._id }}</th> -->
+      <th scope="row">{{ users.prenom }}</th>
+      <td align="center">{{ users.nom }}</td>
+      <td align="center">{{ users.email }}</td>
+      <!-- <td>{{ book.tel }}</td> -->
+      <td align="center">{{ users.matricule }}</td>
+      <td align="center">{{ users.role }}</td>
+
+      <td class="text-center">
+        <a title="modifier" routerLink="/profil/{{ users._id }}" class="link-light btn btn-sm btn-primary"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+          <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+          <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+        </svg></a>
+        
+        <a title="swicher" (click)="changeRole(users._id, users.role)"  class="link-light btn btn-sm btn-success"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-right" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M1 11.5a.5.5 0 0 0 .5.5h11.793l-3.147 3.146a.5.5 0 0 0 .708.708l4-4a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 11H1.5a.5.5 0 0 0-.5.5zm14-7a.5.5 0 0 1-.5.5H2.707l3.147 3.146a.5.5 0 1 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H14.5a.5.5 0 0 1 .5.5z"/>
+        </svg></a>
+
+        <a title="supprimer" (click)="changeEtat(users._id, users.etat)" class="link-light btn btn-sm btn-danger"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-archive-fill" viewBox="0 0 16 16">
+          <path d="M12.643 15C13.979 15 15 13.845 15 12.5V5H1v7.5C1 13.845 2.021 15 3.357 15h9.286zM5.5 7h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1 0-1zM.8 1a.8.8 0 0 0-.8.8V3a.8.8 0 0 0 .8.8h14.4A.8.8 0 0 0 16 3V1.8a.8.8 0 0 0-.8-.8H.8z"/>
+        </svg></a>
+
+
+      </td>
+    </tr>
+    </tbody>
+    </table>
+    <div class="pagination">
+      <pagination-controls  (pageChange)="pages = $event"></pagination-controls>
+    </div>
+    </div>
+<!-- </div> -->
+

@@ -1,0 +1,26 @@
+body
+{
+  background-image: url('../../assets/back.png');
+  background-size: cover;
+  height: 592px;
+}
+
+.pied{
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+.noir{
+  background-color: black;
+  color: #fff;
+}
+.mes
+{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+#ff{
+  display: flex;
+  justify-content: center;
+}

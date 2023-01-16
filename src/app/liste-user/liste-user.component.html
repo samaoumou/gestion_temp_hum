@@ -1,0 +1,72 @@
+<nav   class="navbar navbar-expand-lg colorNav bg-dark">
+  <div class="container-fluid">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+            <img src="../../assets/home.png" alt="">
+        </li>
+        <div class="info">
+          <p>{{prenom}}</p>
+          <p>{{nom}}</p>
+          <p>{{matricule}}</p>
+      </div>
+      </ul>
+      <form class="lesLiens">
+     <!--    <a routerLink="/active" id="active" >active</a>
+        <a routerLink="archive" id="archive"  >archive</a> -->
+        <a  (click)="deconnect()">
+            <svg width="30" height="35" viewBox="0 0 38 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M13.25 39.625H5.58333C4.56667 39.625 3.59165 39.1772 2.87276 38.3802C2.15387 37.5832 1.75 36.5022 1.75 35.375V5.625C1.75 4.49783 2.15387 3.41683 2.87276 2.6198C3.59165 1.82277 4.56667 1.375 5.58333 1.375H13.25" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M26.666 31.125L36.2493 20.5L26.666 9.875" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M36.25 20.5H13.25" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+
+        </a>
+      </form>
+    </div>
+  </div>
+</nav>
+<!-- navbarre en haut -->
+<div  class="container mt-5 ">
+  <h2 class="text-center text-white">Listes des utilisateurs</h2>
+
+
+
+  <div class="row ">
+   <div class="search-hero rec">
+      <input class=" rech" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="&#61442;  Recherche par Nom, Prenom, Email">
+    </div>
+  
+  <div class="cap"></div>
+
+    <table class="table table-striped tab bg-white">
+      <thead> 
+          <tr class="tr text-black">
+            <th>Prenom</th>
+            <th>Nom</th>
+            <th>Matricule</th>
+            <th>Email</th>
+            <th>Date-inscription</th>
+          </tr>
+      </thead>
+      <tbody >
+        <tr *ngFor="let users of User | filter:searchText | paginate: { itemsPerPage: 5, currentPage: pages }">
+          <td><strong>{{ users.prenom }}</strong></td>
+          <td><strong>{{ users.nom }}</strong></td>
+          <td><strong>{{ users.matricule }}</strong></td>
+          <td><strong>{{ users.email }}</strong></td>
+          <td><strong>{{ users.date_inscription }}</strong></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="pagination">
+      <pagination-controls  (pageChange)="pages = $event"></pagination-controls>
+    </div>
+  </div>
+<!-- </div>  -->
+<!-- <pagination-controls (pageChange)="p=$event" class="text-center"></pagination-controls> -->
+
+
+
+
+

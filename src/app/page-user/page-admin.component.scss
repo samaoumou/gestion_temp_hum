@@ -1,0 +1,48 @@
+
+
+body{
+    background-image:url('../../assets/back.png');
+    background-size: cover;
+    height: 900px;
+   
+}
+ .container .part1{
+    height: 100px;
+    border: 5px solid white;
+    border-radius: 15px ;
+} 
+ .container .part2{
+    height: 300px;
+   /*  border: 1px solid white; */
+}
+.container .part3{
+    height: 300px;
+    border: 5px solid white;
+    border-radius: 15px ;
+} 
+.gestion{
+    border: 2px solid white;
+    height:300px ;
+    border-radius: 15px ;
+    border: 5px solid white;
+}
+.tmp-rel{
+    border: 2px solid white;
+    height:300px ;
+    border-radius: 15px ;
+    border: 5px solid white;
+   
+}
+a{
+    color: white !important;
+    text-decoration: none;
+    font-size: 25px;
+    font-weight: bold;
+    
+}
+.sec img{
+    height: 175px;
+    width: 300px;
+    border-radius: 15px ;
+    border: 5px solid white;
+}

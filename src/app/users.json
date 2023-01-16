@@ -1,0 +1,46 @@
+[{
+    "Nom": "Diop",
+    "Prenom": "Joséphine",
+    "Matricule": "M1_2023",
+    "Email": "Sincere@april.biz",
+    "Date_inscription":"02-03-2023"
+
+  },
+  {
+    "Nom": "Diallo",
+    "Prenom": "Assane",
+    "Matricule": "M2_2023",
+    "Email": "Sincere@april.biz",
+    "Date_inscription":"02-03-2023"
+  },
+  {
+    "Nom": "Ndiaye",
+    "Prenom": "Issa",
+    "Matricule": "M3_2023",
+    "Email": "Sincere@april.biz",
+    "Date_inscription":"02-03-2023"
+  },
+  {
+    "Nom": "Ba",
+    "Prenom": "Bara mbacké",
+    "Matricule": "M4_2023",
+    "Email": "Sincere@april.biz",
+    "Date_inscription":"02-03-2023"
+  },
+  {
+    "Nom": "Diagne",
+    "Prenom": "Omar",
+    "Matricule": "M5_2023",
+    "Email": "Sincere@april.biz",
+    "Date_inscription":"02-03-2023"
+  },
+  {
+    "Nom": "Diallo",
+    "Prenom": "khadija",
+    "Matricule": "M6_2023",
+    "Email": "Sincere@april.biz",
+    "Date_inscription":"02-03-2023"
+  }
+ 
+  
+]

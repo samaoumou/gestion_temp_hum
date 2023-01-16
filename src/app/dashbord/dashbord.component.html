@@ -1,0 +1,100 @@
+
+<div class="container p-2  " style="max-width:max-content;">
+  <nav class="navbar  ">
+<span class="bg-black bg-opacity-50  rounded ">
+    <a routerLink="" data-placement="top" data-placement="top" data-toggle="tooltip"  title="">
+
+        <img src="../../assets/home.png" class=" rounded-circle card-img-top" style="width:50px;height:auto" alt="...">
+    </a>
+    </span>
+      <div class="d-flex bg-black bg-opacity-50 p-2 border border-3 border-white" style="border-bottom-right-radius:1rem;">
+ <h4 class=" text-white  " href="#">Système de controle</h4>
+      </div>
+
+  </nav>
+
+
+
+      <div class="rounded mt-2 d-flex justify-content-center bg-black bg-opacity-50 p-3 border border-3 border-white " style="width: px; height:450px;">
+<div class="gap-2  justify-content-center card-group">
+  <div class=" rounded border border-white">
+
+    <div class="d-flex mt-1 p-2 justify-content-center gap-5">
+      <div>
+        <button *ngFor="let imageButton of imageButtons;" (click)="onClick(imageButton)" class="button rounded-circle ">
+    <img src="{{offSrc }}" class="bg-white rounded-circle card-img-top" style="width: 50px; height:auto" alt="...">
+</button>
+    <h5 class=" card-title  mt-5 text-white d-flex justify-content-center " >Off</h5>
+  </div>
+  <div >
+    <button *ngFor="let imageButton of imageButtonOn; "  (click)="onClick(imageButton)" class="button rounded-circle">
+    <img src="{{onSrc}}" class="bg-white rounded-circle card-img-top" style="width: 50px; height:auto" alt="...">
+    </button>
+    <h5 class="d-flex mt-5 justify-content-center text-white card-title">On</h5>
+    </div>
+    </div>
+
+    <div class="  mt-5 p-2 card-body">
+      <img src="{{imageSrc }}"   class="bg-white bg-opacity-25 border border-3 p-1 border-white rounded mx-auto d-block card-img-top"
+       style="width: 200px; height:auto" alt="...">
+    </div>
+  </div>
+  <div class=" p-1 rounded border  border-white" >
+    <div class="p-4 card-body">
+      <div class="p-3  gap-5 bg-black bg-opacity-50 d-flex justify-content-center rounded border border-white" >
+
+        <img src="../../assets/history.png" class="bg-white rounded-circle card-img-top" style="width: 50px; height:auto" alt="...">
+
+            <h5 class=" d-flex pt-3 text-white card-title">Historique des  températures et de l’humidité</h5>
+          </div>
+<div class="mt-5 ">
+      <table class=" p-3 table table-bordered table-striped " style="border-radius:1rem; ">
+
+      <thead  class="bg-black bg-opacity-50 table-bordered  " >
+        <tr class="text-white">
+          <th scope="col">JOURS</th>
+          <th scope="col">Lundi</th>
+          <th scope="col">Mardi</th>
+          <th scope="col">Mercredi</th>
+          <th scope="col">Jeudi</th>
+          <th scope="col">Vendredi</th>
+          <th scope="col">Samedi</th>
+          <th scope="col">Dimanche</th>
+        </tr>
+      </thead>
+<br><br>
+
+      <tbody class="bg-black bg-opacity-50">
+<tr>
+  <td class="text-warning">températures</td>
+  <td></td>
+  <td> </td>
+  <td> </td>
+  <td> </td>
+  <td> </td>
+  <td> </td>
+  <td> </td>
+
+</tr>
+<tr>
+  <td class="text-info">Himudité</td>
+  <td> </td>
+  <td> </td>
+  <td> </td>
+  <td> </td>
+  <td> </td>
+  <td> </td>
+  <td> </td>
+</tr>
+      </tbody>
+
+      </table>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+</div>
+
+</div>
