@@ -10,64 +10,72 @@
 
     <div class="container col-md-8  p-3" *ngIf="!showForm">
 <!-- Start partie 1 -->
-<div class="container part1 " style="border: 3px solid white;border-radius: 15px ;">
-            <div class=" row " >
-                  <div class="col-lg-10 col-md-4 col-lg-3">
-                  <a href="" routerLink="/off" style="font-size: 24px;"> Dashbord</a> <img src="../../assets/dash.png" alt="deconect" >
+<div class="container part1  " style="border: 3px solid white;border-radius: 15px ;">
+            <div class="d-flex  p-1" >
+                  <div class="col-lg-9 ">
+                  <a href="" routerLink="/off" style="font-size:24px;"> Dashbord
+                   <img src="../../assets/dash.png" alt="deconect" ></a>
                   </div>
                   <div class="">
                     <h6 class="text-white  p-1 border" style="border-top-right-radius:1rem;border-bottom-left-radius:1rem; width: max-content;">
                       {{ this.currentUser.prenom }}  {{ this.currentUser.nom }} <img src="../../assets/cnUser.png" class="rounded-circle" style="width:15px;"></h6>
                     
                   </div>
-                  <div class="deconect mt-2 col-lg-2 col-md-4 col-lg-3 " style="position:absolute;right:  0;" >
-                      <img src="../../assets/deconecter.png" alt="deconect" style="height: 50px;" (click)="deconnect()">
+                  <div class="deconect mt-2">
+                      <img src="../../assets/deconecter.png" alt="deconect" style="height: 50px;" (click)="doLogout()">
                   </div>
 
              </div>
  </div>
  <!-- End partie 1 -->
       <div class="container part2 mt-4" >
-        <div class="row">
-        <div class="gestion col-lg-4" style="  border: 2px solid white; height:200px ; border-radius: 15px ; border: 2px solid white;">
-
-            <img src="../../assets/iconeUser.png" alt="deconect"><a routerLink="/inscription">Ajouter Utilisateurs</a>
-
-            <div><br>
-                <img src="../../assets/modUser.png" alt="deconect" ><button class="btn" (click)="choice()">Modifier_profile</button>
-            </div><br>
-            <div>
-                <img src="../../assets/listeUser.png" alt="deconect"><a routerLink="/listeAdmin">Liste Utilisateurs</a>
+        <div class="d-flex gap-2">
+        <div class="gestion col-lg-4 p-2" style="  border: 2px solid white; height:200px ; border-radius: 15px ; border: 2px solid white;">
+          <div class="">
+          <a routerLink="/inscription"> <img src="../../assets/iconeUser.png" alt="deconect">Ajouter Utilisateurs</a>
+        </div>
+            <div class="mt-3">
+              <img src="../../assets/modUser.png" alt="deconect" ><button class="btn" (click)="getData(this.currentUser.id, this.currentUser.nom, this.currentUser.prenom, this.currentUser.email)">Modifier_profile</button>
+            </div>
+            <div class="mt-3">
+              <a routerLink="/listeAdmin"><img src="../../assets/listeUser.png" alt="deconect">Liste Utilisateurs</a>
             </div>
        </div>
        <!--  -->
         <div class="tmp-rel col-lg-8 " style="  border: 2px solid white;height:200px ;border-radius: 15px ;border: 2px solid white;">
-            <div class="row">
-                <div class="col-lg-12" >
-                <h3 class="text-white text-center border border-white" style="border-radius: 5px;">temps reel</h3>
-                </div>
-                <div class="row">
-                <div class="col-lg-4">
-                    <h4 class="text-white  ">Température</h4>
-                   <!--  -->
-                   <div>
-                    <img  src="../../assets/Temp.png" alt="Temp" style="height: 50px;"><a href=""> 25°C </a>
-                </div>
-                </div>
-                <div class="col-lg-5">
-
-                  <!-- <h1 class="text-white  ">Humidité</h1>
-                  <img src="../../assets/hum.png" alt="hum"> -->
-              </div>
-                <div class="col-lg-3">
-
-                    <h4 class="text-white ">Humidité</h4>
-                    <div>
-                     <img src="../../assets/hum.png" alt="hum" style="height: 50px;"><a href=""> 60% </a>
-                    </div>
-                </div>
-                 </div>
+          <div class="row p-2">
+            <div class="col-lg-12" >
+            <h3 class="text-white text-center border border-white" style="border-radius: 5px;">temps reel</h3>
             </div>
+            <div class="row">
+            <div class="col-lg-4">
+                <h4 class="text-white  ">Température</h4>
+               <!--  -->
+               <div>
+                <img  src="../../assets/Temp.png" alt="Temp" style="height: 50px;"><a href=""> 25°C </a>
+            </div>
+            </div>
+            <div class=" mt-4 border-white border rounded d-flex justify-content-center p-4 gap-5 " style="max-width: min-content;">
+            
+          <div class="">
+             
+         <img src="../../assets/buzzerOff.png"  style="height: 50px;">
+        </div>
+      <div class="">
+              <img src="../../assets/minfanOff.png"  style="height: 50px;">
+            </div>
+          
+          
+          </div>
+            <div class="col-lg-3">
+
+                <h4 class="text-white  ">Humidité</h4>
+                <div>
+                 <img src="../../assets/hum.png" alt="hum" style="height: 50px;"><a href=""> 60% </a>
+                </div>
+            </div>
+             </div>
+        </div>
         </div>
     </div>
       </div>
@@ -113,7 +121,7 @@
     <div class="container col-md-6" style=" border-radius:10px" *ngIf="showForm">
       <form method="POST" class="row g-3" id="loginform" [formGroup]="registerForm" (click)="onSubmit();">
         <span *ngIf="mailExiste != '' && mailExiste != undefined" class="alert alert-danger "> mail existe déja </span>
-
+        
         <div>
           <h2 class="text-center mt-5 text-white" id="titre">FORMULAIRE MODIFICATION PROFIL</h2>
         </div>
@@ -152,7 +160,7 @@
         <br>
         <div class="form-group pied">
           <button class="btn btn-primary btn-block noir" routerLink="/pageAdmin" type="submit">Modifier</button>
-           <a class=" btn btn-primary noir" href="javascript:history.go(-1)">Retour</a>
+          <button class=" btn btn-primary noir" routerLink="/listeAdmin">Retour</button>
         </div>
       </form>
     </div>
