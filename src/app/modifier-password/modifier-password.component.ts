@@ -52,10 +52,10 @@ export class ModifierPasswordComponent implements OnInit{
          }
          this.authservice.updatePassword(localStorage.getItem('id'), this.registerForm.value).subscribe((data)=>{
           // console.log(data);
-       
+
           alert("mot_de_passe modifier avec succes"),
-            //  window.location.reload();
-             this.router.navigateByUrl('/pageAdmin');
+             window.location.reload();
+            //  this.router.navigateByUrl('/pageAdmin');
 
           // this.ngZone.run(() => this.router.navigateByUrl('/pageAdmin'));
          }
