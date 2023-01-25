@@ -73,8 +73,8 @@ export class ProfilComponent implements OnInit{
          
           this.AuthService.miseAJour(this.getId, this.registerForm.value).subscribe(
             () => {
-              alert(this.succes),
-              this.ngZone.run(() => this.router.navigateByUrl('/pageAdmin'));
+              alert(this.succes)
+            //  this.ngZone.run(() => this.router.navigateByUrl(''));
             },
             (err) => {
               this.mailExiste = "Email existe déja";
@@ -91,6 +91,5 @@ export class ProfilComponent implements OnInit{
     const isValid = !isWhitespace;
     return isValid ? null : { 'whitespace': true };
 }
-
 
 
