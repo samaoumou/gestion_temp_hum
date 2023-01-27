@@ -8,11 +8,11 @@
 </head>
 <body >
 
-    <div class="container col-md-8  p-3" *ngIf="!showForm">
+    <div class="container col-md-8 bg-black bg-opacity-50 rounded border border-white border-3  p-3" *ngIf="!showForm">
 <!-- Start partie 1 -->
-<div class="container part1  " style="border: 3px solid white;border-radius: 15px ;">
+<div class="container part1  bg-black bg-opacity-50  " style="border: 3px solid white;border-radius: 15px ;">
             <div class="d-flex  p-1" >
-                  <div class="col-lg-9 ">
+                  <div class="col-lg-9  ">
                   <a href="" routerLink="/off" style="font-size:24px;"> Dashbord
                    <img src="../../assets/dash.png" alt="deconect" ></a>
                   </div>
@@ -21,16 +21,16 @@
                       {{ this.currentUser.prenom }}  {{ this.currentUser.nom }} <img src="../../assets/cnUser.png" class="rounded-circle" style="width:15px;"></h6>
                     
                   </div>
-                  <div class="deconect mt-2">
+                  <div class="deconect  mt-2">
                       <img src="../../assets/deconecter.png" alt="deconect" style="height: 50px;" (click)="doLogout()">
                   </div>
 
              </div>
  </div>
  <!-- End partie 1 -->
-      <div class="container part2 mt-4" >
-        <div class="d-flex gap-2">
-        <div class="gestion col-lg-4 p-2" style="  border: 2px solid white; height:200px ; border-radius: 15px ; border: 2px solid white;">
+      <div class="container  part2 mt-4" >
+        <div class="d-flex  gap-2">
+        <div class="gestion bg-black bg-opacity-50 col-lg-4 p-2" style="  border: 2px solid white; height:200px ; border-radius: 15px ; border: 2px solid white;">
           <div class="">
           <a routerLink="/inscription"> <img src="../../assets/iconeUser.png" alt="deconect">Ajouter Utilisateurs</a>
         </div>
@@ -42,9 +42,9 @@
             </div>
        </div>
        <!--  -->
-        <div class="tmp-rel col-lg-8 " style="  border: 2px solid white;height:200px ;border-radius: 15px ;border: 2px solid white;">
+        <div class="tmp-rel bg-black bg-opacity-50 col-lg-8 " style="  border: 2px solid white;height:200px ;border-radius: 15px ;border: 2px solid white;">
           <div class="row p-2">
-            <div class="col-lg-12" >
+            <div class="col-lg-12 " >
             <h3 class="text-white text-center border border-white" style="border-radius: 5px;">temps reel</h3>
             </div>
             <div class="row">
@@ -81,7 +81,7 @@
       </div>
 
  <!-- Start partie 2 -->
- <div class="container part3 mt-4" >
+ <div class="container  bg-black bg-opacity-50  part3 mt-4" >
     <div class="row">
         <div class="col-lg-8 col-md-4 col-lg-3 mt-2 ">
             <table class="table text-white  border border-white">

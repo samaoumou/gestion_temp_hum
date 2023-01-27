@@ -1,5 +1,5 @@
 
-    <nav class="navbar navbar-expand-lg colorNav bg-dark">
+    <nav class="navbar navbar-expand-lg colorNav bg-black bg-opacity-50 rounded">
       <div class="container-fluid">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -27,10 +27,10 @@
     <div class="container">
         <div class="rechercher">
             <input type="text" placeholder="RECHERCHE" [(ngModel)]="searchText" autocomplete="off" title="Rechercher">
-            <button class="btn btn-outline-primary me-2 btn  text-white" type="button" routerLink="/listeAdmin"><a> Liste des utilisateurs actives</a></button>
+            <button class="btn bg-black bg-opacity-50 rounded btn-outline-primary me-2 btn  text-white" type="button" routerLink="/listeAdmin"><a> Liste des utilisateurs actives</a></button>
         </div>
 
-    <table class="table a   lign=center">
+    <table class="table a bg-black bg-opacity-50 rounded  lign=center">
       <thead>
       <tr align="center">
         <th scope="col">Prenom</th>
@@ -60,7 +60,7 @@
         </tr>
     </tbody>
     </table>
-    <div class="pagination">
+    <div class=" bg-black bg-opacity-50 rounded pagination">
       <pagination-controls  (pageChange)="pages = $event"></pagination-controls>
     </div>
     </div>

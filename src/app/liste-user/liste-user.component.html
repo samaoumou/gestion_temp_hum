@@ -1,6 +1,6 @@
-<nav   class="navbar navbar-expand-lg colorNav bg-dark">
+<nav   class="navbar navbar-expand-lg colorNav bg-black bg-opacity-50 ">
   <div class="container-fluid">
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="collapse  navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
             <img src="../../assets/home.png" alt="">
@@ -28,7 +28,7 @@
 </nav>
 <!-- navbarre en haut -->
 <div  class="container mt-5 ">
-  <h2 class="text-center text-white">Listes des utilisateurs</h2>
+  <h2 class="text-center bg-black bg-opacity-50 rounded text-white">Listes des utilisateurs</h2>
 
 
 
@@ -37,9 +37,9 @@
       <input class=" rech" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="&#61442;  Recherche par Nom, Prenom, Email">
     </div>
   
-  <div class="cap"></div>
+  <div class=" cap"></div>
 
-    <table class="table tab ">
+    <table class="table rounded bg-black bg-opacity-50  tab ">
       <thead> 
           <tr class="tr text-white">
             <th>Prenom</th>
@@ -59,7 +59,7 @@
         </tr>
       </tbody>
     </table>
-    <div class="pagination">
+    <div class=" bg-black bg-opacity-50 pagination">
       <pagination-controls  (pageChange)="pages = $event"></pagination-controls>
     </div>
   </div>

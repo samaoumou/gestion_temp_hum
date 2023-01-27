@@ -22,10 +22,7 @@ constructor() { }
   }
 
 
-  onClick(imageNameObject: {
-    srcr: string;
-    srcs: string; src: string;
-}) {
+  onClick(imageNameObject: { srcr: string; srcs: string; src: string;}) {
     this.imageSrc = imageNameObject.src;
     this.onSrc = imageNameObject.srcs;
     this.offSrc = imageNameObject.srcr;
