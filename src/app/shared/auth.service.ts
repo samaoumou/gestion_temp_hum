@@ -84,6 +84,11 @@ export class AuthService {
     return this.http.get(api);
   }
 
+  historique(){
+    let api = `${this.endpoint}/historique`;
+    return this.http.get(api);
+  }
+
   miseAJour(id: any, data: any): Observable<any> {
     let API_URL = `${this.endpoint}/miseAJour/${id}`;
     return this.httpClient
