@@ -63,8 +63,9 @@ constructor(
           // this.router.navigate(['cpt2/' + res.msg._id]);
         });
       },err=>{
-        console.log(err);
-        
+        console.log(err.error.message);
+        this.errmsg=err.error.message;
+
       }
     
       );
