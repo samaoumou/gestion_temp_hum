@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import Swal from 'sweetalert2';
 import { AuthService } from '../shared/auth.service';
 
+
 //ici j'importe des proprietés de angular liées a l'utilisation des formulaire
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 //import { CrudService } from './../services/inscription.service';
@@ -28,7 +29,26 @@ constructor(private ngZone:NgZone,private router: Router,private activatedRoute:
   public authService: AuthService,
   public formBuilder: FormBuilder,
   public AuthService: AuthService,
-  ){}
+  ){
+    this.registerForm = this.formBuilder.group({
+      prenom: [''],
+      nom: [''],
+      email: [''],
+
+      
+    });
+
+     this.getId = localStorage.getItem('id');
+
+    this.AuthService.getUserById(this.getId).subscribe((res) => {
+      this.registerForm.setValue({
+        prenom: res['prenom'],
+        nom: res['nom'],
+        email: res['email'],
+      });
+    }); 
+
+  }
 
 
 deconnect(){
@@ -116,18 +136,26 @@ onSubmit() {
   if (this.registerForm.invalid) {
       return;
   }
-
+  
    this.AuthService.miseAJour(this.getId, this.registerForm.value).subscribe(
      () => {
-       alert(this.succes),
-       this.ngZone.run(() => this.router.navigateByUrl('/listeAdmin'));
+       alert(this.succes)
+       if(this.currentUser.role=="administrateur"){
+        this.ngZone.run(() => this.router.navigateByUrl('/pageAdmin'));
+       }
+       else{
+        this.ngZone.run(() => this.router.navigateByUrl('/pageUser'));
+       }
+      
      },
      (err) => {
        this.mailExiste = "Email existe déja";
      }
    );
+ 
 
-  }
+ // alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value))
+}
  // alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value))
 }
   export function  noWhitespaceValidator(control: FormControl) {
