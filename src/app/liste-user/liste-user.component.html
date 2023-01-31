@@ -39,9 +39,9 @@
   
   <div class="cap"></div>
 
-    <table class="table table-striped tab bg-white">
+    <table class="table tab ">
       <thead> 
-          <tr class="tr text-black">
+          <tr class="tr text-white">
             <th>Prenom</th>
             <th>Nom</th>
             <th>Matricule</th>
@@ -49,7 +49,7 @@
             <th>Date-inscription</th>
           </tr>
       </thead>
-      <tbody >
+      <tbody class="text-white" >
         <tr *ngFor="let users of User | filter:searchText | paginate: { itemsPerPage: 5, currentPage: pages }">
           <td><strong>{{ users.prenom }}</strong></td>
           <td><strong>{{ users.nom }}</strong></td>

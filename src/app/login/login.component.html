@@ -36,9 +36,10 @@
                 <div class="alert-danger contient" *ngIf="signinForm.controls['email'].invalid && signinForm.controls['email'].touched" > Format mail incorrecte </div> -->
 
                 <div class="alert-danger contient"  *ngIf="signinForm.controls['email'].errors" class="help-block"></div>
-                <div class="alert-danger contient"  *ngIf="signinForm.controls['email'].errors && signinForm.controls['email'].errors['required']">
+                <!-- <div class="alert-danger contient"  *ngIf="signinForm.controls['email'].errors && signinForm.controls['email'].errors['required']">
                 Champs Obligatoire
-                </div>
+                </div> -->
+                <div class="alert-danger contient" *ngIf="signinForm.controls['email'].invalid && signinForm.controls['email'].touched" > Champs Obligatoire </div>
                 <div class="alert-danger contient"  *ngIf="signinForm.controls['email'].errors && signinForm.controls['email'].errors['email']">le format de l'email est invalide</div>
               </div>
            
@@ -55,7 +56,7 @@
                 <div class="alert-danger contient" *ngIf="signinForm.controls['password'].invalid && signinForm.controls['password'].touched" > Champs Obligatoire </div>
             </div><br>
             <div class="centre">
-              <div class="btn">
+              <div class="">
                 <button type="submit" class="bouton"  [disabled]="signinForm.invalid">Se connecter</button>
                 </div>
             </div>

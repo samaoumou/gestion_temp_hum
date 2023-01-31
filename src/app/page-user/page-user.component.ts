@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from '../shared/auth.service';
 import Swal from 'sweetalert2';
 import { FormGroup } from '@angular/forms';
+import { AfficheWebService } from '../affiche-web.service';
 
 @Component({
   selector: 'app-page-user',
@@ -10,6 +11,9 @@ import { FormGroup } from '@angular/forms';
   styleUrls: ['./page-user.component.scss']
 })
 export class PageUserComponent implements OnInit {
+  temperature:any;
+  humidite:any;
+  dt: any;
   currentUser: any = {};
   getItem: any = {};
   submitted: Boolean= false
@@ -23,6 +27,7 @@ export class PageUserComponent implements OnInit {
     private actRoute: ActivatedRoute,
     public authService: AuthService,
     public AuthService: AuthService,
+    private AfficheWebService :AfficheWebService,
    
     ){}
 
@@ -68,7 +73,14 @@ export class PageUserComponent implements OnInit {
     this.authService.getUserProfile(localStorage.getItem('id')).subscribe((res) => {
       console.log(res)
       this.currentUser = res.msg;
-      
+      this.AfficheWebService.listen().subscribe((data)=>{
+        console.log(data);
+        this.dt= data;
+        this.temperature = this.dt?.temperature
+        console.log(this.temperature);
+        this.humidite = this.dt?.humidite
+        console.log(this.humidite);
+      })
       
      
     }); 

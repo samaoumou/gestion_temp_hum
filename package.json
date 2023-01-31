@@ -24,8 +24,13 @@
     "ngx-pagination": "^6.0.3",
     "nodemon": "^2.0.20",
     "rxjs": "~7.5.0",
+<<<<<<< HEAD
     "serialport": "^10.5.0",
     "socket.io": "^4.5.4",
+=======
+    "socket.io": "^4.5.4",
+    "socket.io-client": "^4.5.4",
+>>>>>>> 3045bed91c565b67e7aa47bf969135e533bd7c19
     "sweetalert2": "^11.4.8",
     "tslib": "^2.3.0",
     "zone.js": "~0.12.0"
