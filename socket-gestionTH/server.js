@@ -26,7 +26,7 @@ var app = http.createServer(function(req, res) {
     res.end(index);
 });
 
-var Url = "mongodb+srv://sosso:abc@cluster0.yhbijru.mongodb.net/dhtTemp"; 
+var Url = "mongodb+srv://issa:0501Issa@cluster0.szgf3wm.mongodb.net/User"; 
 app.listen(4001, function() {
     console.log('Demarrage du serveur Mongo au port', 4001);})
 
@@ -92,7 +92,7 @@ var heureEtDate = mois + '/' + numMois + '/' + laDate;
 /* var tempe = parseInt(temperature);
 var humi = parseInt(humidite); */
  //fin test
-  if ((heur == 09 && min == 32 && sec == 00) || (heur == 12 && min == 00 && sec == 00) || (heur == 19 && min == 00 && sec == 00)) { 
+  if ((heur == 18 && min == 06 && sec == 00) || (heur == 18 && min == 07 && sec == 00) || (heur == 18 && min == 08 && sec == 00)) { 
   
     var tempe = parseInt(temp[0]); 
     var humi = parseInt(temp[1]);
@@ -103,7 +103,7 @@ var humi = parseInt(humidite); */
     //Connexion a mongodb et insertion Temperature et humidite
     MongoClient.connect(Url, { useUnifiedTopology: true }, function(err, db) {
         if (err) throw err;
-        var dbo = db.db("dhtTemp");
+        var dbo = db.db("User");
         dbo.collection("tempHum").insertOne(tempEtHum, function(err, res) {
             if (err) throw err;
             console.log("1 document inserted");
