@@ -1,4 +1,4 @@
-import { Component, TRANSLATIONS } from '@angular/core';
+import { Component} from '@angular/core';
 import {AfficheWebService } from '../websocket.service'
 @Component({
   selector: 'app-dashbord',
