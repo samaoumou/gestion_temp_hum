@@ -2,6 +2,7 @@ import { Component, NgZone, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import Swal from 'sweetalert2';
 import { AuthService } from '../shared/auth.service';
+import {AfficheWebService } from '../websocket.service'
 
 //ici j'importe des proprietés de angular liées a l'utilisation des formulaire
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
@@ -23,12 +24,18 @@ export class PageAdminComponent implements OnInit {
   getId: any;
   registerForm!: FormGroup<any>;
   showForm = false;
+  humidite: any;
+  temperature: any;
+  
+
+  
 
   constructor(private ngZone:NgZone,private router: Router,private activatedRoute: ActivatedRoute,
     private actRoute: ActivatedRoute,
     public authService: AuthService,
     public formBuilder: FormBuilder,
     public AuthService: AuthService,
+    private websocketService: AfficheWebService,
     ){}
 
 
@@ -84,7 +91,11 @@ export class PageAdminComponent implements OnInit {
 
 
     })
-
+    this.websocketService.socket.on('data', (data: any) => {
+       console.log(data);
+      this.temperature=data.temperature ;
+      this.humidite=data.humidite 
+    });
 
   }
   logout() {
@@ -131,8 +142,13 @@ export class PageAdminComponent implements OnInit {
 
    // alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value))
 }
-
-
+// changement de l'image par apport à la température
+/* imageth =''
+ht = [{humide:'assets/humide.png',sec:'assets/sec.jpg'}];
+changetime(imageNameObject: { src: string;}) {
+  this.imageth = imageNameObject.src;
+}
+ */
 
 }
 export function  noWhitespaceValidator(control: FormControl) {
