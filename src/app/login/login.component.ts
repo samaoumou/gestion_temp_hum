@@ -12,6 +12,8 @@ export class LoginComponent implements OnInit {
 signinForm: FormGroup;
   res: any;
   msg!: string;
+  error: any;
+  errmsg: any;
 
 constructor(
   public fb: FormBuilder,
@@ -35,10 +37,17 @@ constructor(
     {
       this.authService.signIn(this.signinForm.value).subscribe((res: any) => {
         localStorage.setItem('access_token', res.token);
+        console.log(res);
+        if (!res._id) {
+           this.errmsg="email inexistant";
+           return;
+        }
         this.authService.getUserProfile(res._id).subscribe((res) => {
           // this.currentUser = res._id;
           localStorage.setItem("id",res.msg._id)
-          console.log(res.msg.password)
+          // console.log(res.msg.password)
+       
+         
           if(res.msg.etat==true){
             if(res.msg.role=="administrateur"){
               this.router.navigateByUrl("pageAdmin");
@@ -46,15 +55,19 @@ constructor(
             if(res.msg.role=="utilisateur_simple"){
               this.router.navigateByUrl("/pageUser");
             }
-          }
-          else{
-            this.msg="compte archivé";
+          }else{
+            this.error="compte archivé";
             this.signinForm.reset()
 
           }
           // this.router.navigate(['cpt2/' + res.msg._id]);
         });
-      });
+      },err=>{
+        console.log(err);
+        
+      }
+    
+      );
     }
   }
 
