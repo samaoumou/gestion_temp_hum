@@ -55,11 +55,6 @@ readonly uri:string ="ws://localhost:4001";
  
  // };
 
- 
-   
- 
-
-
   turnOffFan() {
     this.socket.emit('etat','0');
   }
