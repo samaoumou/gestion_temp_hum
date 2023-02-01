@@ -71,28 +71,28 @@
 <br><br>
 
       <tbody class="bg-black bg-opacity-50">
-<tr>
+<tr *ngFor="let i of temp">
   <td class="text-warning">températures</td>
-  <td></td>
-  <td> </td>
-  <td> </td>
-  <td> </td>
-  <td> </td>
-  <td> </td>
-  <td> </td>
+  <td >{{i.Temperature}}°C</td>
+  <!-- <td *ngFor="let i of temperature">{{i.Temperature}}°C </td>
+  <td *ngFor="let i of temperature"> {{i.Temperature}}°C</td>
+  <td *ngFor="let i of temperature"> {{i.Temperature}}°C</td>
+  <td *ngFor="let i of temperature"> {{i.Temperature}}°C</td>
+  <td *ngFor="let i of temperature"> {{i.Temperature}}°C</td>
+  <td *ngFor="let i of temperature"> {{i.Temperature}}°C </td> -->
 
 </tr>
-<tr>
-  <td class="text-info">Himudité</td>
-  <td> </td>
-  <td> </td>
-  <td> </td>
-  <td> </td>
-  <td> </td>
-  <td> </td>
-  <td> </td>
-</tr>
-      </tbody>
+<tr *ngFor="let i of temp">
+  <td class="text-info">Humidité</td>
+  <td >{{i.Humidite}}% </td>
+  <!-- <td *ngFor="let i of temperature">{{i.Humidite}}% </td>
+  <td *ngFor="let i of temperature"> {{i.Humidite}}%</td>
+  <td *ngFor="let i of temperature"> {{i.Humidite}}%</td>
+  <td *ngFor="let i of temperature">{{i.Humidite}}% </td>
+  <td *ngFor="let i of temperature">{{i.Humidite}}% </td>
+  <td *ngFor="let i of temperature">{{i.Humidite}}% </td> -->
+<!-- </tr>
+       --></tbody>
 
       </table>
       </div>

@@ -2,7 +2,8 @@ import { Component, NgZone, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import Swal from 'sweetalert2';
 import { AuthService } from '../shared/auth.service';
-import {AfficheWebService } from '../websocket.service'
+import { AfficheWebService } from '../affiche-web.service';
+import { Temp } from '../shared/temp';
 
 //ici j'importe des proprietés de angular liées a l'utilisation des formulaire
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
@@ -15,7 +16,8 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
   styleUrls: ['./page-admin.component.scss']
 })
 export class PageAdminComponent implements OnInit {
-
+  temperature:any;
+  humidite:any;
   currentUser: any = {};
   getItem: any = {};
   submitted: Boolean= false
@@ -24,18 +26,24 @@ export class PageAdminComponent implements OnInit {
   getId: any;
   registerForm!: FormGroup<any>;
   showForm = false;
-  humidite: any;
-  temperature: any;
+  
   
 
   
 
+  dt: any;
+  tempHuitHeure:any;
+  tempDouzeHeure:any;
+  tempDixNeufHeure:any;
+  temp!:Temp[]
+  currentDate:any;
   constructor(private ngZone:NgZone,private router: Router,private activatedRoute: ActivatedRoute,
     private actRoute: ActivatedRoute,
     public authService: AuthService,
     public formBuilder: FormBuilder,
     public AuthService: AuthService,
     private websocketService: AfficheWebService,
+    private AfficheWebService :AfficheWebService,
     ){}
 
 
@@ -75,13 +83,38 @@ export class PageAdminComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    let id = this.actRoute.snapshot.paramMap.get('id');
+   // let id = this.actRoute.snapshot.paramMap.get('id');
     this.authService.getUserProfile(localStorage.getItem('id')).subscribe((res) => {
       console.log(res)
       this.currentUser = res.msg;
-
+      this.AfficheWebService.listen().subscribe((data)=>{
+        console.log(data);
+        this.dt= data;
+        this.temperature = this.dt?.temperature
+        console.log(this.temperature);
+        this.humidite = this.dt?.humidite
+        console.log(this.humidite);
+       /*  this.tempHuitHeure = this.dt?.tempHuitHeure
+        console.log(this.tempHuitHeure);
+        this.tempDouzeHeure = this.dt?.tempDouzeHeure
+        console.log(this.tempDouzeHeure);
+        this.tempDixNeufHeure = this.dt?.tempDixNeufHeure
+        console.log(this.tempDixNeufHeure); */
+      }
+      )
 
     });
+    this.AuthService.historique().subscribe(data=>{
+      this.temp=data as unknown as Temp[]
+      this.currentDate = new Date().getDate() + '/' + new Date().getMonth() +1 + '/'+  new Date().getFullYear();
+       this.tempHuitHeure = this.temp.filter((e:any)=>e.Heure=="08:00:00"&& e.Date==this.currentDate)
+       this.tempDouzeHeure = this.temp.filter((e:any)=>e.Heure=="12:00:00"&& e.Date==this.currentDate)
+       this.tempDixNeufHeure = this.temp.filter((e:any)=>e.Heure=="19:00:00"&& e.Date==this.currentDate)
+
+    })
+
+
+   
 
     this.registerForm = this.formBuilder.group({
       prenom: ['', [Validators.required, noWhitespaceValidator]],
