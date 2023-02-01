@@ -21,26 +21,32 @@
 
     <div class="d-flex mt-1 p-2 justify-content-center gap-5">
       <div>
-        <button *ngFor="let imageButton of imageButtons;" (click)="onClick(imageButton)" class="button rounded-circle ">
+        <button *ngFor="let imageButton of imageButtons;" (click)="onClick(imageButton)" class="button rounded-pill ">
     <img src="{{offSrc }}" class="bg-white rounded-circle card-img-top" style="width: 50px; height:auto" alt="...">
 </button>
     <h5 class=" card-title  mt-5 text-white d-flex justify-content-center " >Off</h5>
   </div>
   <div >
-    <button *ngFor="let imageButton of imageButtonOn; "  (click)="onClick(imageButton)" class="button rounded-circle">
-    <img src="{{onSrc}}" class="bg-white rounded-circle card-img-top" style="width: 50px; height:auto" alt="...">
+    <button *ngFor="let imageButton of imageButtonOn; "  (click)="onClick(imageButton)" class="button  rounded-pill">
+    <img src="{{onSrc}}" class="bg-white rounded-circle card-img-top" id="button" style="width: 50px; height:auto" alt="...">
     </button>
     <h5 class="d-flex mt-5 justify-content-center text-white card-title">On</h5>
     </div>
     </div>
-
+    <button (click)="turnOnFan()">On</button>
+    <button (click)="turnOffFan()">Off</button>
     <div class="  mt-5 p-2 card-body">
       <img src="{{imageSrc }}"   class="bg-white bg-opacity-25 border border-3 p-1 border-white rounded mx-auto d-block card-img-top"
        style="width: 200px; height:auto" alt="...">
     </div>
   </div>
   <div class=" p-1 rounded border  border-white" >
-    <div class="p-4 card-body">
+    <div c
+    
+    
+    
+    
+    lass="p-4 card-body">
       <div class="p-3  gap-5 bg-black bg-opacity-50 d-flex justify-content-center rounded border border-white" >
 
         <img src="../../assets/history.png" class="bg-white rounded-circle card-img-top" style="width: 50px; height:auto" alt="...">

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,14 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>page Admin</title>
 </head>
-<body >
-
+ -->
+    
+<
+            
     <div class="container bg-black bg-opacity-50 col-md-8  p-3" *ngIf="!showForm">
-<!-- Start partie 1 -->
 <div class="container part1 " style="border: 3px solid white;border-radius: 15px ;">
             <div class=" row " >
                   <div class="col-lg-10 col-md-4 col-lg-3">
-                  <a href="" routerLink="/off" style="font-size: 24px;"> Dashbord</a> <img src="../../assets/dash.png" alt="deconect" >
+                  <a href="" routerLink="/off" style="font-size: 24px;"> Dashbord</a>
+                   <img src="../../assets/dash.png" alt="deconect" >
                   </div>
                   <div class="">
                     <h6 class="text-white  p-1 border" style="border-top-right-radius:1rem;border-bottom-left-radius:1rem; width: max-content;">
@@ -47,35 +49,38 @@
                 <h4 class="text-white ">Température</h4>
                <!--  -->
                <div>
-                <img  src="../../assets/Temp.png" alt="Temp" style="height: 50px;"><a href=""> {{temperature}}°C </a>
+                <img   src="../../assets/Temp.png" alt="Temp" style="height: 50px;">
+               <span class="text-white"> {{ temperature }}°C </span>
             </div>
             </div>
             <div class=" mt-4 border-white border rounded d-flex justify-content-center p-4 gap-5 " style="max-width: min-content;">
             
           <div class="">
              
-         <img src="../../assets/buzzerOff.png"  style="height: 50px;">
+         <img  *ngIf="temperature >= 30" src="../../assets/buzzerOn.gif"  style="height: 50px;">
+         <img  *ngIf="temperature < 30" src="../../assets/buzzerOff.png"  style="height: 50px;">
         </div>
       <div class="">
-              <img src="../../assets/minfanOff.png"  style="height: 50px;">
+              <img *ngIf="humidite >= 30" src="assets/minfanOn.gif"  style="height: 50px;">
+              <img *ngIf="humidite < 30" src="assets/minfanOff.png"  style="height: 50px;">
             </div>
-          
           
           </div>
             <div class="col-lg-3">
 
                 <h4 class="text-white">Humidité</h4>
                 <div>
-                 <img src="../../assets/hum.png" alt="hum" style="height: 50px;"><a href=""> {{humidite}}% </a>
+                 <img src="../../assets/hum.png" alt="hum" style="height: 50px;">
+                 <span class="text-white"> {{ humidite }} % </span>
                 </div>
                  </div>
             </div>
         </div>
     </div>
       </div>
-
+    
  <!-- Start partie 2 -->
- <div class="container part3 mt-4" >
+ <div class="container  bg-black bg-opacity-50  part3 mt-4" >
     <div class="row">
         <div class="col-lg-8 col-md-4 col-lg-3 mt-2 ">
             <table class="table text-white  border border-white">
@@ -105,10 +110,11 @@
               </table>
         </div>
         <div class="sec col-lg-4 col-md-4 col-lg-3 mt-2">
-            <img src="../../assets/humide.png" alt="sec">
+            <img *ngIf="humidite >= 60" src="assets/humide.png" alt="humide">
+            <img *ngIf="humidite < 60" src="assets/sec.png" alt="sec">
         </div>
     </div>
-</div>
+
  <!-- End partie2 -->
     </div>
 
@@ -159,6 +165,5 @@
       </form>
     </div>
 
-</body>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.min.js" integrity="sha512-1/RvZTcCDEUjY/CypiMz+iqqtaoQfAITmNSJY17Myp4Ms5mdxPS5UV7iOfdZoxcGhzFbOm6sntTKJppjvuhg4g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-</html>

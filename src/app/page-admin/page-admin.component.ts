@@ -26,6 +26,11 @@ export class PageAdminComponent implements OnInit {
   getId: any;
   registerForm!: FormGroup<any>;
   showForm = false;
+  
+  
+
+  
+
   dt: any;
   tempHuitHeure:any;
   tempDouzeHeure:any;
@@ -37,6 +42,7 @@ export class PageAdminComponent implements OnInit {
     public authService: AuthService,
     public formBuilder: FormBuilder,
     public AuthService: AuthService,
+    private websocketService: AfficheWebService,
     private AfficheWebService :AfficheWebService,
     ){}
 
@@ -118,7 +124,11 @@ export class PageAdminComponent implements OnInit {
 
 
     })
-
+    this.websocketService.socket.on('data', (data: any) => {
+       console.log(data);
+      this.temperature=data.temperature ;
+      this.humidite=data.humidite 
+    });
 
   }
   logout() {
@@ -165,8 +175,13 @@ export class PageAdminComponent implements OnInit {
 
    // alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value))
 }
-
-
+// changement de l'image par apport à la température
+/* imageth =''
+ht = [{humide:'assets/humide.png',sec:'assets/sec.jpg'}];
+changetime(imageNameObject: { src: string;}) {
+  this.imageth = imageNameObject.src;
+}
+ */
 
 }
 export function  noWhitespaceValidator(control: FormControl) {
