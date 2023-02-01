@@ -24,7 +24,7 @@ export class AfficheWebService {
     })
     });
   }
-  sendMessage() {
+  sendMessage(message: string) {
     this.fanStatus = !this.fanStatus;
     this.socket$.next({ command: this.fanStatus ? 'turnOnFan' : 'turnOffFan' });
     }

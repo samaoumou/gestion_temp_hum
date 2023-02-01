@@ -36,14 +36,32 @@ var io = require('socket.io')(app, { cors:
     credentials:false
 }});
 
-io.on('connection', function(socket) {
+/* io.on('connection', function(socket) {
     
     console.log('Node is listening to port');
     socket.on("fan",(donne)=> {
         console.log(donne)
     })
     
+}); */
+
+var temoin = '0';
+io.on('connection', (socket) => {
+    console.log('Client connected');
+  
+    socket.on('etat', (eta) => {
+    temoin = eta;
+      console.log(eta);
+    });
+  
 });
+        
+        parser.on('data', (data) => {
+        console.log(data);
+
+        port.write(temoin);
+
+        });
 
 /* parser.on('data', function(data) {
     
