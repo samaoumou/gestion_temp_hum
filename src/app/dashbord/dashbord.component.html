@@ -81,11 +81,20 @@
 
   </tr>   -->
 
- <tr *ngFor="let i of element">
+ <!-- <tr *ngFor="let i of element">
   <th scope="row">Température</th>
   <td>{{i.Temperature}}°C</td>
-</tr> 
-
+</tr>  -->
+<tr >
+  <th scope="row">Température</th>
+  <td *ngFor="let i of element">{{i.Temperature}}°C</td>
+  <td *ngFor="let i of element1">{{i.Temperature}}°C</td>
+  <td *ngFor="let i of element2">{{i.Temperature}}°C</td>
+  <td *ngFor="let i of element3">{{i.Temperature}}°C</td>
+  <td *ngFor="let i of element4">{{i.Temperature}}°C</td>
+  <td *ngFor="let i of element5">{{i.Temperature}}°C</td>
+  <td *ngFor="let i of element6">{{i.Temperature}}°C</td>
+</tr>
 
 <tr *ngFor="let i of element">
   <th scope="row">Humidité</th>

@@ -24,7 +24,13 @@ export class DashbordComponent  implements OnInit{
   currentUser: any;
   currentDate: any;
   hist: any;
-  element!: any[];
+  element!: any;
+  element1!:any
+  element2!: any;
+  element4!: any;
+  element3!:any
+  element5!: any;
+  element6!: any;
 
 constructor(public AuthService: AuthService) {}
   ngOnInit() {
@@ -35,6 +41,7 @@ constructor(public AuthService: AuthService) {}
       ;
     }) */
     this.AuthService.historique().subscribe(data=>{
+      //this.temp = data;
       this.temp=data as unknown as Temp[]
       /* console.log(this.temp); */
      /*  this.currentDate = new Date().getDate() -7 + '/' + new Date().getMonth() +1 + '/'+  new Date().getFullYear();
@@ -43,13 +50,20 @@ constructor(public AuthService: AuthService) {}
    
       for (let index = 0; index < 7; index++) {
         
-         this.element = Array(this.temp[index]);
+         this.element = Array(this.temp[0]);
+         this.element1 = Array(this.temp[1]);
+         this.element2 = Array(this.temp[2]);
+         this.element3 = Array(this.temp[3]);
+         this.element4 = Array(this.temp[4]);
+         this.element5 = Array(this.temp[5]);
+         this.element6 = Array(this.temp[6]);
             //console.log(this.element);
            /*  this.tab.push(this.element); */
             
 
     }
-    console.log(this.element);} )   
+    console.log(this.element);
+  } )   
   };
 
  
