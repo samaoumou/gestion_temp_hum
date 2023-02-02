@@ -23,6 +23,8 @@ export class AuthGuard implements CanActivate {
      // window.alert('Veuillez vous connecté d_abord');
       this.router.navigateByUrl('/connexion')
     }
+    
     return true;
+    
   }
 }

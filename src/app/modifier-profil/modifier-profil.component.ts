@@ -18,7 +18,7 @@ export class ModifierProfilComponent implements OnInit {
 currentUser: any = {};
 getItem: any = {};
 submitted: Boolean= false
-mailExiste:string='';
+mailExiste: string | null = null;
 succes:string='Modifier avec succes';
 getId: any;
 registerForm!: FormGroup<any>;
@@ -54,6 +54,7 @@ constructor(private ngZone:NgZone,private router: Router,private activatedRoute:
 deconnect(){
   Swal.fire({
     title: 'Déconnexion',
+   
     text: 'Êtes-vous sûre de vouloir vous déconnecter ?',
     icon: 'warning',
     showCancelButton: true,
@@ -80,6 +81,23 @@ choice(){
     } else if (result.dismiss === Swal.DismissReason.cancel) {
       (result.dismiss === Swal.DismissReason.cancel)
       this.ngZone.run(() => this.router.navigateByUrl('/modifierPassword'));
+    }
+
+
+  })
+}
+
+choice2(){
+  Swal.fire({
+    title: 'Modification réussie',
+    showCancelButton: true,
+    confirmButtonText: 'OK',
+   // cancelButtonText: 'modifier mot_de_passe',
+  }).then((result) => {
+    if(this.currentUser.role=="administrateur"){
+      this.ngZone.run(() => this.router.navigateByUrl('/pageAdmin'));
+     } else  {
+      this.ngZone.run(() => this.router.navigateByUrl('/pageUser'));
     }
 
 
@@ -139,7 +157,12 @@ onSubmit() {
   
    this.AuthService.miseAJour(this.getId, this.registerForm.value).subscribe(
      () => {
-       alert(this.succes)
+      Swal.fire('Modification',
+      'Réussie !',
+      'success');
+//window.location.reload();
+        window.setTimeout(function(){location.reload()},1500)
+        this.router.navigateByUrl('/pageAdmin')
        if(this.currentUser.role=="administrateur"){
         this.ngZone.run(() => this.router.navigateByUrl('/pageAdmin'));
        }
@@ -157,6 +180,7 @@ onSubmit() {
  // alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value))
 }
  // alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value))
+ 
 }
   export function  noWhitespaceValidator(control: FormControl) {
     const isWhitespace = (control.value || '').trim().length === 0;

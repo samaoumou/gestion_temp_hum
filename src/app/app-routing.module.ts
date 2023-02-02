@@ -31,6 +31,7 @@ const routes: Routes = [
   { path: 'listeUser', component: ListeUserComponent, canActivate: [AuthGuard]},
   { path:  "off", component: DashbordComponent, canActivate: [AuthGuard]},
   { path: 'pageAdmin',component: LoginComponent, canActivate: [AuthGuard]},
+  { path: '**', pathMatch: 'full', redirectTo: "connexion"},
  // { path: 'on', component: DashbordOnComponent},
   // { path: 'user-profile/:id', component: PageAdminComponent, canActivate: [AuthGuard] }
 ];

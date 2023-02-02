@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, NgZone, OnInit } from '@angular/core';
 //ici j'importe des proprietés de angular liées a l'utilisation des formulaire
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
@@ -23,7 +23,8 @@ export class InscriptionComponent implements OnInit {
     private formBuilder: FormBuilder,
     public fb: FormBuilder,
     public authService: AuthService,
-    public router: Router
+    public router: Router,
+    private ngZone:NgZone,
   ) {
     this.registerForm = this.fb.group({
       prenom: [''],
@@ -37,6 +38,8 @@ export class InscriptionComponent implements OnInit {
       date_inscription: [new Date()],
     });
   }
+
+  
   //ici on gére le controle de saisit du formulaire
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group(
@@ -85,9 +88,12 @@ export class InscriptionComponent implements OnInit {
     this.authService.signUp(this.registerForm.value).subscribe((res) => {
       console.log(res.errors.error.email.message);
       if (res.result) {
-        this.registerForm.reset();
-        alert('Inscription réussie hoooww!!!');
-        this.router.navigate(['connexion']);
+       Swal.fire('Modification',
+                    'Réussie !',
+                    'success');
+          //window.location.reload();
+          window.setTimeout(function(){location.reload()},1500)
+          this.router.navigateByUrl('/pageAdmin')
       } else if (res.error) {
         console.log(res.error);
         this.mailExiste = 'Email existe déja';
@@ -120,8 +126,13 @@ export class InscriptionComponent implements OnInit {
     this.authService.signUp(this.registerForm.value).subscribe((res) => {
       console.log(res.errors.error.email.message);
       if (res.result) {
-        alert('Inscription réussie hoooww!!!');
-        this.router.navigate(['connexion']);
+       this.ngOnInit();
+       Swal.fire('Modification',
+                    'Réussie !',
+                    'success');
+          //window.location.reload();
+          window.setTimeout(function(){location.reload()},1500)
+          this.router.navigateByUrl('/pageAdmin')
       } else if (res.error) {
         this.mailExiste = 'Email existe déja';
       }
