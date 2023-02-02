@@ -24,6 +24,8 @@ export class DashbordComponent  implements OnInit{
   imageButtons = [ {src:'assets/fanstop.png', srcs:'assets/noton.jpg', srcr :'assets/off.jpg'}];
   imageButtonOn = [ {src:'assets/fanrun.gif',  srcr:'assets/notoff.jpg', srcs : 'assets/on.jpg'}];
   socket: any;
+  actRoute: any;
+  currentUser: any;
 
 constructor(private websocketService: AfficheWebService, public AuthService: AuthService) {
   this.socket = io(this.uri);
@@ -41,29 +43,16 @@ readonly uri:string ="ws://localhost:4001";
   turnOnFan() {
     this.socket.emit('etat','1');
   }
-  actRoute: any;
-  currentUser: any;
-
-
-  //ngOnInit() {
-    /* let id = this.actRoute.snapshot.paramMap.get('id');
-    this.AuthService.getUserProfile(localStorage.getItem('id')).subscribe((res) => {
-      console.log(res)
-      this.currentUser = res.msg
-      ;
-    }) */
- 
- // };
-
+  
   turnOffFan() {
     this.socket.emit('etat','0');
   }
 
   onClick(imageNameObject: { srcr: string; srcs: string; src: string;}) {
     this.imageSrc = imageNameObject.src;
-    this.onSrc = imageNameObject.srcs;
-    this.offSrc = imageNameObject.srcr;
-    return this.turnOnFan();
+    this.onSrc = imageNameObject.srcs ;
+    this.offSrc = imageNameObject.srcr ;
+    
   }
 
 }
