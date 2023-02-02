@@ -16,6 +16,9 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
   styleUrls: ['./page-admin.component.scss']
 })
 export class PageAdminComponent implements OnInit {
+open() {
+throw new Error('Method not implemented.');
+}
   temperature:any;
   humidite:any;
   currentUser: any = {};
@@ -32,6 +35,9 @@ export class PageAdminComponent implements OnInit {
   tempDixNeufHeure:any;
   temp!:Temp[]
   currentDate:any;
+  Tmoy :any;
+  Hmoy: any;
+ /*  var!: moyT; */
   constructor(private ngZone:NgZone,private router: Router,private activatedRoute: ActivatedRoute,
     private actRoute: ActivatedRoute,
     public authService: AuthService,
@@ -100,11 +106,15 @@ export class PageAdminComponent implements OnInit {
     });
     this.AuthService.historique().subscribe(data=>{
       this.temp=data as unknown as Temp[]
-      this.currentDate = new Date().getDate() + '/' + new Date().getMonth() +1 + '/'+  new Date().getFullYear();
+      this.currentDate = new Date().getDate() + '/' + (parseInt(String(new Date().getMonth())) +1) + '/'+  new Date().getFullYear();
        this.tempHuitHeure = this.temp.filter((e:any)=>e.Heure=="08:00:00"&& e.Date==this.currentDate)
        this.tempDouzeHeure = this.temp.filter((e:any)=>e.Heure=="12:00:00"&& e.Date==this.currentDate)
        this.tempDixNeufHeure = this.temp.filter((e:any)=>e.Heure=="19:00:00"&& e.Date==this.currentDate)
 
+console.log(this.currentDate);
+
+      /*  this.Tmoy=(this.tempHuitHeure+this.tempDouzeHeure+this.tempDixNeufHeure)/3;
+       console.log(this.Tmoy); */
     })
 
 

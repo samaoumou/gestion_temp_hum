@@ -1,19 +1,23 @@
-import { Component, NgZone, OnInit } from '@angular/core';
+import * as core from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import Swal from 'sweetalert2';
 import { AuthService } from '../shared/auth.service';
-
+/* import { Component, Input } from '@angular/core'; */
+/* import from '@ng-bootstr.ap/ng-bootstrap'; */
 
 //ici j'importe des proprietés de angular liées a l'utilisation des formulaire
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 //import { CrudService } from './../services/inscription.service';
 
-@Component({
+@core.Component({
   selector: 'app-modifier-profil',
   templateUrl: './modifier-profil.component.html',
   styleUrls: ['./modifier-profil.component.scss']
 })
-export class ModifierProfilComponent implements OnInit {
+export class ModifierProfilComponent implements core.OnInit {
+open() {
+throw new Error('Method not implemented.');
+}
 
 currentUser: any = {};
 getItem: any = {};
@@ -24,7 +28,7 @@ getId: any;
 registerForm!: FormGroup<any>;
 showForm = false;
 
-constructor(private ngZone:NgZone,private router: Router,private activatedRoute: ActivatedRoute,
+constructor(private ngZone:core.NgZone,private router: Router,private activatedRoute: ActivatedRoute,
   private actRoute: ActivatedRoute,
   public authService: AuthService,
   public formBuilder: FormBuilder,
