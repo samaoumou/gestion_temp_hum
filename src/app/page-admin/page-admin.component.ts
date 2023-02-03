@@ -30,7 +30,7 @@ export class PageAdminComponent implements OnInit {
   
 
   
-
+  tmoy: any;
   dt: any;
   tempHuitHeure:any;
   tempDouzeHeure:any;
@@ -112,7 +112,7 @@ export class PageAdminComponent implements OnInit {
        this.tempDouzeHeure = this.temp.filter((e:any)=>e.Heure=="12:00:00"&& e.Date==this.currentDate)
        this.tempDixNeufHeure = this.temp.filter((e:any)=>e.Heure=="19:00:00"&& e.Date==this.currentDate)
        console.log(this.temp)
-
+      this.tmoy=(this.tempHuitHeure+this.tempDixNeufHeure+this.tempDouzeHeure)/3
     })
 
 
