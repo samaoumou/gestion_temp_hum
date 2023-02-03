@@ -45,6 +45,7 @@ constructor(
         this.authService.getUserProfile(res._id).subscribe((res) => {
           // this.currentUser = res._id;
           localStorage.setItem("id",res.msg._id)
+          localStorage.setItem("email",res.msg.email)
           localStorage.setItem("role",res.msg.role)
           console.log(res.msg.role)
 

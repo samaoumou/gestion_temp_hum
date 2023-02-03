@@ -49,6 +49,7 @@ export class ListeAdministrateurComponent implements OnInit {
   }
 
   constructor(public AuthService: AuthService, private router: Router) {
+
     const role=localStorage.getItem('role')
     console.log(role)
     if (role=="utilisateur_simple"){
@@ -60,8 +61,11 @@ export class ListeAdministrateurComponent implements OnInit {
     this.AuthService.getAllUser().subscribe((res: any) => {
       console.log(res);
       
+
       this.data = res;
-      this.User = this.data.filter((e: any) => e.etat == true);
+      const email=localStorage.getItem('email')
+      console.log(email)
+      this.User = this.data.filter((e: any) => e.etat == true && e.email!=email);
     });
     if (this.data.status == 401) {
       this.router.navigateByUrl("/connexion");
