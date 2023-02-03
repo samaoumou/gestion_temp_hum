@@ -50,7 +50,13 @@ throw new Error('Method not implemented.');
     public AuthService: AuthService,
     private websocketService: AfficheWebService,
     private AfficheWebService :AfficheWebService,
-    ){}
+    ){
+      const role=localStorage.getItem('role')
+      console.log(role)
+      if (role=="utilisateur_simple"){
+        this.router.navigateByUrl("/pageUser")
+      }
+    }
 
 
   deconnect(){

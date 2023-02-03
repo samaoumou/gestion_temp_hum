@@ -20,12 +20,19 @@ export class InscriptionComponent implements OnInit {
   users: any;
 
   constructor(
+    
     private formBuilder: FormBuilder,
     public fb: FormBuilder,
     public authService: AuthService,
     public router: Router,
     private ngZone:NgZone,
   ) {
+    const role=localStorage.getItem('role')
+    console.log(role)
+    if (role=="utilisateur_simple"){
+      this.router.navigateByUrl("/pageUser")
+    }
+    
     this.registerForm = this.fb.group({
       prenom: [''],
       nom: [''],

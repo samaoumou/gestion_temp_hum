@@ -48,7 +48,13 @@ export class ListeAdministrateurComponent implements OnInit {
     });
   }
 
-  constructor(public AuthService: AuthService, private router: Router) {}
+  constructor(public AuthService: AuthService, private router: Router) {
+    const role=localStorage.getItem('role')
+    console.log(role)
+    if (role=="utilisateur_simple"){
+      this.router.navigateByUrl("/pageUser")
+    }
+  }
 
   ngOnInit(): void {
     this.AuthService.getAllUser().subscribe((res: any) => {

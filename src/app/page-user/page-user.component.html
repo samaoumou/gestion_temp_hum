@@ -149,9 +149,6 @@
                 </div>
                 <div class="col-lg-3">
                   <h4 class="text-white">Humidité</h4>
-
-
-                    <h4 class="text-white  ">Humidité</h4>
                     <div>
                      <img src="../../assets/hum.png" alt="hum" style="height: 50px;"><a href=""> {{humidite}}%  </a>
                     </div>
@@ -166,38 +163,39 @@
       <!-- Start partie 2 -->
       <div class="container part3 mt-4">
         <div class="row">
-          <div class="col-lg-8 col-md-4 col-lg-3 mt-2">
-            <table class="table text-white border border-white">
-              <thead>
-                <tr>
-                  <th scope="col">Heure</th>
-                  <th scope="col">08H00</th>
-                  <th scope="col">12H00</th>
-                  <th scope="col">19H00</th>
-                </tr>
-                <br />
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">Température</th>
-                  <td>27°C</td>
-                  <td>30°C</td>
-                  <td>23°C</td>
-                </tr>
-                <br />
-                <tr>
-                  <th scope="row">Humidité</th>
-                  <td>50%</td>
-                  <td>30%</td>
-                  <td>10%</td>
-                </tr>
-              </tbody>
-            </table>
+          <div class="col-lg-8 col-md-4 col-lg-3 mt-2 ">
+              <table class="table text-white  border border-white">
+                  <thead >
+                    <tr>
+                      <th scope="col">Heure</th>
+                      <th scope="col">08H00</th>
+                      <th scope="col">12H00</th>
+                      <th scope="col">19H00</th>
+                    </tr><br>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">Température</th>
+                      <td *ngFor="let i of tempHuitHeure">{{i.Temperature}}°C</td>
+                      <td *ngFor="let i of tempDouzeHeure">{{i.Temperature}}°C</td>
+                      <td *ngFor="let i of tempDixNeufHeure">{{i.Temperature}}°C</td>
+                    </tr><br>
+                    <tr>
+                      <th scope="row">Humidité</th>
+                      <td *ngFor="let i of tempHuitHeure">{{i.Humidite}}%</td>
+                      <td *ngFor="let i of tempDouzeHeure">{{i.Humidite}}%</td>
+                      <td *ngFor="let i of tempDixNeufHeure">{{i.Humidite}}%</td>
+                    </tr>
+  
+                  </tbody>
+                </table>
           </div>
           <div class="sec col-lg-4 col-md-4 col-lg-3 mt-2">
-            <img src="../../assets/humide.png" alt="sec" />
+              <img *ngIf="humidite >= 60" src="assets/humide.png" alt="humide">
+              <img *ngIf="humidite < 60" src="assets/sec.png" alt="sec">
+              <!-- <h1 class="text-white">TMOY:{{tmoy}}</h1> -->
           </div>
-        </div>
+      </div>
       </div>
       <!-- End partie2 -->
     </div>

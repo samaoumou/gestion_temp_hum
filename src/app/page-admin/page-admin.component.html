@@ -47,8 +47,8 @@
             
           <div class="">
              
-         <img  *ngIf="temperature >= 30" src="../../assets/buzzerOn.gif"  style="height: 50px;">
-         <img  *ngIf="temperature < 30" src="../../assets/buzzerOff.png"  style="height: 50px;">
+         <img  *ngIf="temperature >= 27" src="../../assets/buzzerOn.gif"  style="height: 50px;">
+         <img  *ngIf="temperature < 27" src="../../assets/buzzerOff.png"  style="height: 50px;">
         </div>
       <div class="">
               <img *ngIf="humidite >= 30" src="assets/minfanOn.gif"  style="height: 50px;">
@@ -102,7 +102,7 @@
         <div class="sec col-lg-4 col-md-4 col-lg-3 mt-2">
             <img *ngIf="humidite >= 60" src="assets/humide.png" alt="humide">
             <img *ngIf="humidite < 60" src="assets/sec.png" alt="sec">
-            <h1 class="text-white">TMOY:{{tmoy}}</h1>
+            <!-- <h1 class="text-white">TMOY:{{tmoy}}</h1> -->
         </div>
     </div>
 

@@ -4,7 +4,7 @@ import { AuthService } from '../shared/auth.service';
 import Swal from 'sweetalert2';
 import { FormGroup } from '@angular/forms';
 import { AfficheWebService } from '../affiche-web.service';
-
+import { Temp } from '../shared/temp';
 @Component({
   selector: 'app-page-user',
   templateUrl: './page-user.component.html',
@@ -22,6 +22,17 @@ export class PageUserComponent implements OnInit {
   getId: any;
   registerForm!: FormGroup<any>;
   showForm = false;
+  tmoy: any;
+ 
+  tempHuitHeure:any;
+  tempDouzeHeure:any;
+  tempDixNeufHeure:any;
+  temp!:Temp[]
+  currentDate:any;
+  Tmoy :any;
+  Hmoy: any;
+
+  
   constructor(private activatedRoute: ActivatedRoute,
     private ngZone:NgZone,private router: Router,
     private actRoute: ActivatedRoute,
@@ -82,8 +93,19 @@ export class PageUserComponent implements OnInit {
         console.log(this.humidite);
       })
       
-     
+      this.AuthService.historique().subscribe(data=>{
+        this.temp=data as unknown as Temp[]
+        this.currentDate ='0'+ (+new Date().getDate()) + '/' +'0'+ (+(new Date().getMonth()+1)) + '/'+  new Date().getFullYear();
+        console.log(this.currentDate)
+         this.tempHuitHeure = this.temp.filter((e:any)=>e.Heure=="9:23:00"&& e.Date==this.currentDate)
+         console.log(this.tempHuitHeure)
+         this.tempDouzeHeure = this.temp.filter((e:any)=>e.Heure=="9:37:00"&& e.Date==this.currentDate)
+         this.tempDixNeufHeure = this.temp.filter((e:any)=>e.Heure=="9:44:00"&& e.Date==this.currentDate)
+         console.log(this.temp)
+        this.tmoy=(this.tempHuitHeure+this.tempDixNeufHeure+this.tempDouzeHeure)/3
+      })
     }); 
+    
   }
 }
 
