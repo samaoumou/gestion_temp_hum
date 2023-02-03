@@ -102,7 +102,11 @@ export class PageUserComponent implements OnInit {
          this.tempDouzeHeure = this.temp.filter((e:any)=>e.Heure=="9:37:00"&& e.Date==this.currentDate)
          this.tempDixNeufHeure = this.temp.filter((e:any)=>e.Heure=="9:44:00"&& e.Date==this.currentDate)
          console.log(this.temp)
-        this.tmoy=(this.tempHuitHeure+this.tempDixNeufHeure+this.tempDouzeHeure)/3
+         const temp8 = this.tempHuitHeure[0].Temperature;
+         const temp12 = this.tempDouzeHeure [0].Temperature;
+         const temp19 = this.tempDixNeufHeure [0].Temperature;
+         console.log(this.temp)
+         this.tmoy = (parseInt(String(temp8)) + parseInt(String(temp12)) + parseInt(String(temp19))) / 3; 
       })
     }); 
     
