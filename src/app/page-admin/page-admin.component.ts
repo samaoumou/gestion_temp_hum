@@ -52,7 +52,7 @@ throw new Error('Method not implemented.');
     private AfficheWebService :AfficheWebService,
     ){
       const role=localStorage.getItem('role')
-      console.log(role)
+     // console.log(role)
       if (role=="utilisateur_simple"){
         this.router.navigateByUrl("/pageUser")
       }
@@ -97,7 +97,7 @@ throw new Error('Method not implemented.');
   ngOnInit(): void {
    // let id = this.actRoute.snapshot.paramMap.get('id');
     this.authService.getUserProfile(localStorage.getItem('id')).subscribe((res) => {
-      console.log(res)
+     // console.log(res)
       this.currentUser = res.msg;
       this.AfficheWebService.listen().subscribe((data)=>{
         console.log(data);

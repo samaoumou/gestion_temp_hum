@@ -79,7 +79,7 @@ export class InscriptionComponent implements OnInit {
 
   getAllData() {
     return this.authService.getAllUser().subscribe((data) => {
-      console.log(data);
+     // console.log(data);
       this.users = data;
     });
   }

@@ -37,7 +37,7 @@ constructor(
     {
       this.authService.signIn(this.signinForm.value).subscribe((res: any) => {
         localStorage.setItem('access_token', res.token);
-        console.log(res);
+      //  console.log(res);
         if (!res._id) {
            this.errmsg="email inexistant";
            return;
@@ -47,7 +47,7 @@ constructor(
           localStorage.setItem("id",res.msg._id)
           localStorage.setItem("email",res.msg.email)
           localStorage.setItem("role",res.msg.role)
-          console.log(res.msg.role)
+         // console.log(res.msg.role)
 
           // console.log(res.msg.password)
        
@@ -67,7 +67,7 @@ constructor(
           // this.router.navigate(['cpt2/' + res.msg._id]);
         });
       },err=>{
-        console.log(err.error.message);
+       // console.log(err.error.message);
         this.errmsg=err.error.message;
 
       }

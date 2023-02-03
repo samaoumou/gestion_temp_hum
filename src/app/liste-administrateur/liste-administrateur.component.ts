@@ -59,12 +59,12 @@ export class ListeAdministrateurComponent implements OnInit {
 
   ngOnInit(): void {
     this.AuthService.getAllUser().subscribe((res: any) => {
-      console.log(res);
+      //console.log(res);
       
 
       this.data = res;
       const email=localStorage.getItem('email')
-      console.log(email)
+     // console.log(email)
       this.User = this.data.filter((e: any) => e.etat == true && e.email!=email);
     });
     if (this.data.status == 401) {
