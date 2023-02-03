@@ -96,10 +96,21 @@
   <td *ngFor="let i of element6">{{i.Temperature}}°C</td>
 </tr>
 
-<tr *ngFor="let i of element">
+<tr >
+  <th scope="row">Température</th>
+  <td *ngFor="let i of element">{{i.Humidite}}%</td>
+  <td *ngFor="let i of element1">{{i.Humidite}}%</td>
+  <td *ngFor="let i of element2">{{i.Humidite}}%</td>
+  <td *ngFor="let i of element3">{{i.Humidite}}%</td>
+  <td *ngFor="let i of element4">{{i.Humidite}}%</td>
+  <td *ngFor="let i of element5">{{i.Humidite}}%</td>
+  <td *ngFor="let i of element6">{{i.Humidite}}%</td>
+</tr>
+
+<!-- <tr *ngFor="let i of element">
   <th scope="row">Humidité</th>
   <td>{{i.Humidite}}%</td>
- </tr> 
+ </tr>  -->
        </tbody>
 
       </table>
