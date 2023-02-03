@@ -112,11 +112,14 @@ throw new Error('Method not implemented.');
         console.log(this.tempDouzeHeure);
         this.tempDixNeufHeure = this.dt?.tempDixNeufHeure
         console.log(this.tempDixNeufHeure); */
+        
+     /*  this.Mhum = (parseInt(String(this.hum8h)) + parseInt(String(this.hum12h)) + parseInt(String(this.hum19h))) / 3; */
       }
       )
 
     });
     this.AuthService.historique().subscribe(data=>{
+
       this.temp=data as unknown as Temp[]
       this.currentDate ='0'+ (+new Date().getDate()) + '/' +'0'+ (+(new Date().getMonth()+1)) + '/'+  new Date().getFullYear();
       console.log(this.currentDate)
@@ -124,8 +127,13 @@ throw new Error('Method not implemented.');
        console.log(this.tempHuitHeure)
        this.tempDouzeHeure = this.temp.filter((e:any)=>e.Heure=="9:37:00"&& e.Date==this.currentDate)
        this.tempDixNeufHeure = this.temp.filter((e:any)=>e.Heure=="9:44:00"&& e.Date==this.currentDate)
+       const temp8 = this.tempHuitHeure[0].Temperature;
+       const temp12 = this.tempDouzeHeure [0].Temperature;
+       const temp19 = this.tempDixNeufHeure [0].Temperature;
        console.log(this.temp)
-      this.tmoy=(this.tempHuitHeure+this.tempDixNeufHeure+this.tempDouzeHeure)/3
+       this.tmoy = (parseInt(String(temp8)) + parseInt(String(temp12)) + parseInt(String(temp19))) / 3; 
+       
+       console.log(this.tmoy)
     })
 
 
