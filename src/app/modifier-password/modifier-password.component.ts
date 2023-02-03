@@ -5,7 +5,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 //import { CrudService } from './../services/inscription.service';
 import { AuthService } from '../shared/auth.service';
 import { NgZone } from '@angular/core';
-
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-modifier-password',
@@ -52,10 +52,12 @@ export class ModifierPasswordComponent implements OnInit{
          }
          this.authservice.updatePassword(localStorage.getItem('id'), this.registerForm.value).subscribe((data)=>{
           // console.log(data);
-       
-          alert("mot_de_passe modifier avec succes"),
-            //  window.location.reload();
-             this.router.navigateByUrl('/pageAdmin');
+          Swal.fire('Modification',
+          'Réussie !',
+          'success');
+//window.location.reload();
+          window.setTimeout(function(){location.reload()},2000)
+          this.router.navigateByUrl('/pageAdmin')
 
           // this.ngZone.run(() => this.router.navigateByUrl('/pageAdmin'));
          }

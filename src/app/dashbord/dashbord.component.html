@@ -63,33 +63,56 @@
           <th scope="col">Vendredi</th>
           <th scope="col">Samedi</th>
           <th scope="col">Dimanche</th>
+          <!-- <th scope="col">Dimanche</th> -->
         </tr>
       </thead>
 <br><br>
 
-      <tbody class="bg-black bg-opacity-50">
-<tr *ngFor="let i of temp">
- <!--  <td class="text-warning">températures</td> -->
-  <!-- <td >{{i.Temperature}}°C</td> -->
-  <!-- <td *ngFor="let i of temperature">{{i.Temperature}}°C </td>
-  <td *ngFor="let i of temperature"> {{i.Temperature}}°C</td>
-  <td *ngFor="let i of temperature"> {{i.Temperature}}°C</td>
-  <td *ngFor="let i of temperature"> {{i.Temperature}}°C</td>
-  <td *ngFor="let i of temperature"> {{i.Temperature}}°C</td>
-  <td *ngFor="let i of temperature"> {{i.Temperature}}°C </td> -->
+      <tbody class="bg-white bg-opacity-50">
+<!-- <tr *ngFor="let i of element">
+  <td class="text-warning">températures</td>
+  <td >{{i.Temperature}}°C</td>
+  <td >{{i.Temperature}}°C</td>
+  <td >{{i.Temperature}}°C</td>
+  <td >{{i.Temperature}}°C</td>
+  <td >{{i.Temperature}}°C</td>
+  <td >{{i.Temperature}}°C</td>
+  <td >{{i.Temperature}}°C</td>  
+  <td >{{i.Temperature}}°C</td>
 
+  </tr>   -->
+
+ <!-- <tr *ngFor="let i of element">
+  <th scope="row">Température</th>
+  <td>{{i.Temperature}}°C</td>
+</tr>  -->
+<tr >
+  <th scope="row">Température</th>
+  <td *ngFor="let i of element">{{i.Temperature}}°C</td>
+  <td *ngFor="let i of element1">{{i.Temperature}}°C</td>
+  <td *ngFor="let i of element2">{{i.Temperature}}°C</td>
+  <td *ngFor="let i of element3">{{i.Temperature}}°C</td>
+  <td *ngFor="let i of element4">{{i.Temperature}}°C</td>
+  <td *ngFor="let i of element5">{{i.Temperature}}°C</td>
+  <td *ngFor="let i of element6">{{i.Temperature}}°C</td>
 </tr>
-<tr *ngFor="let i of temp">
- <!--  <td class="text-info">Humidité</td> -->
- <!--  <td >{{i.Humidite}}% </td> --> 
-  <!-- <td *ngFor="let i of temperature">{{i.Humidite}}% </td>
-  <td *ngFor="let i of temperature"> {{i.Humidite}}%</td>
-  <td *ngFor="let i of temperature"> {{i.Humidite}}%</td>
-  <td *ngFor="let i of temperature">{{i.Humidite}}% </td>
-  <td *ngFor="let i of temperature">{{i.Humidite}}% </td>
-  <td *ngFor="let i of temperature">{{i.Humidite}}% </td> -->
-<!-- </tr>
-       --></tbody>
+
+<tr >
+  <th scope="row">Température</th>
+  <td *ngFor="let i of element">{{i.Humidite}}%</td>
+  <td *ngFor="let i of element1">{{i.Humidite}}%</td>
+  <td *ngFor="let i of element2">{{i.Humidite}}%</td>
+  <td *ngFor="let i of element3">{{i.Humidite}}%</td>
+  <td *ngFor="let i of element4">{{i.Humidite}}%</td>
+  <td *ngFor="let i of element5">{{i.Humidite}}%</td>
+  <td *ngFor="let i of element6">{{i.Humidite}}%</td>
+</tr>
+
+<!-- <tr *ngFor="let i of element">
+  <th scope="row">Humidité</th>
+  <td>{{i.Humidite}}%</td>
+ </tr>  -->
+       </tbody>
 
       </table>
       </div>

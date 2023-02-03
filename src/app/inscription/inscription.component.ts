@@ -92,7 +92,7 @@ export class InscriptionComponent implements OnInit {
                     'Réussie !',
                     'success');
           //window.location.reload();
-          window.setTimeout(function(){location.reload()},1500)
+          window.setTimeout(function(){location.reload()},2000)
           this.router.navigateByUrl('/pageAdmin')
       } else if (res.error) {
         console.log(res.error);
@@ -131,7 +131,7 @@ export class InscriptionComponent implements OnInit {
                     'Réussie !',
                     'success');
           //window.location.reload();
-          window.setTimeout(function(){location.reload()},1500)
+          window.setTimeout(function(){location.reload()},2000)
           this.router.navigateByUrl('/pageAdmin')
       } else if (res.error) {
         this.mailExiste = 'Email existe déja';
