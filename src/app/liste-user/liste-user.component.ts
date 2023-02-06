@@ -42,7 +42,9 @@ export class ListeUserComponent implements OnInit{
     this.AuthService.getAllUser().subscribe((res) => {
       console.log(res);
       this.data = res;
-      this.User = this.data.filter((e: any) => e.etat == true );
+      const email=localStorage.getItem('email')
+      this.data = res;
+      this.User = this.data.filter((e: any) => e.etat == true  && e.email!=email);
 
     });
   }
